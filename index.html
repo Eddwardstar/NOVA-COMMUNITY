@@ -3,1540 +3,1509 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NOVA COMMUNITY</title>
-
-<meta
-  name="description"
-  content="NOVA COMMUNITY — seu espaço, suas pessoas, seu mundo."
->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-  rel="stylesheet"
->
+<meta name="description" content="NOVA COMMUNITY — Seu espaço. Suas pessoas. Seu mundo.">
+<meta name="theme-color" content="#090713">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* =========================================================
-   NOVA COMMUNITY V3
-   DESIGN SYSTEM
-========================================================= */
-
-:root {
-    --bg: #05040b;
-    --bg2: #090713;
-
-    --panel: rgba(14, 12, 25, 0.78);
-    --panel2: rgba(22, 18, 38, 0.72);
-
-    --line: rgba(255,255,255,.09);
-    --line-hover: rgba(167,139,250,.35);
-
-    --text: #faf9ff;
-    --muted: #a9a4b8;
-
-    --purple: #8b5cf6;
-    --purple2: #6d28d9;
-
-    --blue: #4f46e5;
-    --pink: #d946ef;
-
-    --green: #22c55e;
-    --red: #fb7185;
-
-    --shadow:
-        0 30px 90px rgba(0,0,0,.55);
-
-    --radius: 22px;
+:root{
+  --bg:#06050c;
+  --bg2:#0d0918;
+  --card:rgba(19,15,32,.72);
+  --card2:rgba(30,23,49,.78);
+  --border:rgba(255,255,255,.10);
+  --text:#f7f4ff;
+  --muted:#aaa4bd;
+  --purple:#7957ff;
+  --pink:#cf42ff;
+  --blue:#426cff;
+  --danger:#ff477e;
+  --success:#4dffb0;
+  --shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
-* {
-    box-sizing: border-box;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(124,58,237,.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(37,99,235,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(217,70,239,.12),
-            transparent 35%
-        ),
-        #05040b;
-
-    color: var(--text);
-
-    font-family:
-        Inter,
-        system-ui,
-        sans-serif;
-
-    overflow-x: hidden;
+body{
+  min-height:100vh;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 20% 10%,rgba(119,65,255,.18),transparent 28%),
+    radial-gradient(circle at 80% 20%,rgba(54,105,255,.14),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(201,47,255,.10),transparent 30%),
+    var(--bg);
+  overflow-x:hidden;
 }
 
 button,
 input,
-textarea {
-    font: inherit;
+textarea,
+select{
+  font:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+  cursor:pointer;
 }
 
-.hidden {
-    display: none !important;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-#particles {
-    position: fixed;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-
-    z-index: -1;
-}
-
-.grid-background {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: .12;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.04) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.04) 1px,
-            transparent 1px
-        );
-
-    background-size: 45px 45px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-
-    z-index: -2;
-}
-
-/* =========================================================
-   GLASS
-========================================================= */
-
-.glass {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
-        );
-
-    border:
-        1px solid var(--line);
-
-    backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
-    -webkit-backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
-    box-shadow:
-        var(--shadow);
-}
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.primary-button,
-.secondary-button,
-.danger-button {
-    border: 0;
-
-    border-radius: 14px;
-
-    padding: 12px 17px;
-
-    color: white;
-
-    transition:
-        transform .2s ease,
-        filter .2s ease,
-        box-shadow .2s ease;
-}
-
-.primary-button {
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #4f46e5,
-            #d946ef
-        );
-
-    box-shadow:
-        0 12px 35px
-        rgba(124,58,237,.25);
-}
-
-.secondary-button {
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid var(--line);
-}
-
-.danger-button {
-    background:
-        rgba(251,113,133,.12);
-
-    border:
-        1px solid
-        rgba(251,113,133,.3);
-
-    color: #fecdd3;
-}
-
-.primary-button:hover,
-.secondary-button:hover,
-.danger-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-}
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-.auth-screen {
-    min-height: 100vh;
-
-    display: grid;
-    place-items: center;
-
-    padding: 24px;
-}
-
-.auth-box {
-    width: min(470px, 100%);
-
-    padding: 34px;
-
-    border-radius: 30px;
-}
-
-.brand {
-    text-align: center;
-
-    margin-bottom: 28px;
-}
-
-.logo {
-    width: 78px;
-    height: 78px;
-
-    margin: auto;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 25px;
-
-    font-size: 34px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6d28d9,
-            #2563eb,
-            #d946ef
-        );
-
-    box-shadow:
-        0 0 50px
-        rgba(139,92,246,.38);
-}
-
-.brand h1 {
-    font-family: "Space Grotesk";
-
-    font-size: 31px;
-
-    letter-spacing: 1px;
-
-    margin:
-        16px 0 6px;
+#particles{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
 }
 
-.brand h1 span {
-    color: #a78bfa;
+.app{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
 }
 
-.brand p {
-    color: var(--muted);
-
-    margin: 0;
+.hidden{
+  display:none!important;
 }
-
-.tabs {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    padding: 4px;
-
-    background:
-        rgba(255,255,255,.045);
 
-    border-radius: 14px;
-
-    margin-bottom: 20px;
+.glass{
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
 }
-
-.tabs button {
-    border: 0;
-
-    padding: 12px;
-
-    border-radius: 11px;
-
-    color: var(--muted);
 
-    background: transparent;
+button.primary{
+  border:0;
+  color:white;
+  font-weight:700;
+  padding:13px 18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  box-shadow:0 10px 30px rgba(121,87,255,.25);
+  transition:.2s;
 }
 
-.tabs button.active {
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--blue)
-        );
+button.primary:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
 }
 
-.field {
-    margin: 14px 0;
+button.secondary{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:rgba(255,255,255,.05);
+  padding:12px 16px;
+  border-radius:13px;
+  transition:.2s;
 }
-
-.field label {
-    display: block;
 
-    color: #c8c3d3;
-
-    font-size: 13px;
-
-    margin-bottom: 7px;
+button.secondary:hover{
+  background:rgba(255,255,255,.09);
 }
-
-.field input,
-.field textarea {
-    width: 100%;
-
-    padding: 13px 14px;
-
-    border-radius: 14px;
-
-    border:
-        1px solid var(--line);
-
-    outline: none;
-
-    background:
-        rgba(255,255,255,.045);
-
-    color: white;
 
-    transition: .2s;
+button.danger{
+  border:0;
+  color:white;
+  background:linear-gradient(135deg,#e72e61,#ff477e);
+  padding:12px 16px;
+  border-radius:13px;
 }
 
-.field input:focus,
-.field textarea:focus {
-    border-color:
-        rgba(167,139,250,.7);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(139,92,246,.1);
+input,
+textarea,
+select{
+  width:100%;
+  color:white;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--border);
+  border-radius:13px;
+  outline:none;
+  padding:13px 14px;
+  transition:.2s;
 }
 
-.full {
-    width: 100%;
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(150,110,255,.7);
+  box-shadow:0 0 0 3px rgba(121,87,255,.10);
 }
-
-.auth-links {
-    text-align: center;
 
-    margin-top: 16px;
-
-    color: var(--muted);
-
-    font-size: 13px;
+textarea{
+  resize:vertical;
+  min-height:100px;
 }
-
-.link-button {
-    background: transparent;
 
-    border: 0;
-
-    color: #c4b5fd;
+select option{
+  background:#151020;
 }
-
-.alert {
-    padding: 12px 14px;
 
-    border-radius: 13px;
-
-    margin-bottom: 14px;
-
-    font-size: 13px;
+label{
+  display:block;
+  color:#c7c1d4;
+  font-size:13px;
+  margin-bottom:7px;
 }
-
-.alert.error {
-    background:
-        rgba(190,24,93,.15);
 
-    border:
-        1px solid
-        rgba(244,63,94,.35);
+/* AUTH */
 
-    color: #fecdd3;
+#authScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
 }
 
-.alert.success {
-    background:
-        rgba(34,197,94,.12);
-
-    border:
-        1px solid
-        rgba(34,197,94,.28);
-
-    color: #bbf7d0;
+.auth-card{
+  width:min(470px,100%);
+  padding:34px;
+  border-radius:28px;
+  position:relative;
+  overflow:hidden;
 }
-
-/* =========================================================
-   APP
-========================================================= */
-
-.topbar {
-    position: sticky;
-
-    top: 0;
-
-    z-index: 50;
-
-    height: 72px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding:
-        0 24px;
 
-    background:
-        rgba(5,4,11,.75);
-
-    border-bottom:
-        1px solid var(--line);
-
-    backdrop-filter:
-        blur(20px);
+.auth-card::before{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  top:-150px;
+  right:-100px;
+  background:radial-gradient(circle,rgba(184,76,255,.28),transparent 70%);
+  pointer-events:none;
 }
-
-.mini-brand {
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
 
-    font-family:
-        "Space Grotesk";
-
-    font-weight: 700;
+.logo{
+  width:78px;
+  height:78px;
+  border-radius:24px;
+  margin:0 auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:35px;
+  background:linear-gradient(135deg,#365cff,#ca3dff);
+  box-shadow:0 0 45px rgba(118,71,255,.35);
 }
-
-.mini-logo {
-    width: 38px;
-    height: 38px;
 
-    display: grid;
-    place-items: center;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6d28d9,
-            #2563eb,
-            #d946ef
-        );
+.auth-title{
+  text-align:center;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:31px;
+  font-weight:800;
+  letter-spacing:-1px;
 }
-
-.top-actions {
-    display: flex;
 
-    align-items: center;
-
-    gap: 8px;
+.auth-title span{
+  color:#9e82ff;
 }
-
-.avatar {
-    width: 39px;
-    height: 39px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    background: #171526;
 
-    border:
-        1px solid
-        rgba(255,255,255,.13);
+.auth-subtitle{
+  text-align:center;
+  color:var(--muted);
+  margin:8px 0 25px;
 }
 
-.layout {
-    max-width: 1450px;
-
-    margin: auto;
-
-    padding: 22px;
-
-    display: grid;
-
-    grid-template-columns:
-        230px 1fr;
-
-    gap: 22px;
+.tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:4px;
+  border-radius:14px;
+  background:rgba(255,255,255,.055);
+  margin-bottom:22px;
 }
-
-.sidebar {
-    position: sticky;
 
-    top: 94px;
-
-    height:
-        calc(100vh - 116px);
-
-    padding: 14px;
-
-    border-radius: 23px;
-
-    display: flex;
-
-    flex-direction: column;
+.tabs button{
+  border:0;
+  padding:12px;
+  border-radius:11px;
+  background:transparent;
+  color:#aaa3b8;
 }
 
-.nav {
-    display: grid;
-
-    gap: 6px;
+.tabs button.active{
+  background:linear-gradient(135deg,var(--purple),#5942e9);
+  color:white;
 }
-
-.nav button {
-    text-align: left;
-
-    padding: 12px 13px;
-
-    border-radius: 13px;
-
-    border:
-        1px solid transparent;
 
-    background: transparent;
-
-    color: #aaa5b9;
+.form-group{
+  margin-bottom:14px;
 }
-
-.nav button:hover,
-.nav button.active {
-    background:
-        rgba(139,92,246,.12);
 
-    border-color:
-        rgba(139,92,246,.18);
-
-    color: white;
+.form-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-.sidebar-bottom {
-    margin-top: auto;
+.form-actions button{
+  flex:1;
 }
 
-.content {
-    min-width: 0;
+.auth-error,
+.auth-success{
+  padding:11px 13px;
+  border-radius:12px;
+  margin-bottom:14px;
+  font-size:13px;
 }
 
-.page {
-    display: none;
+.auth-error{
+  color:#ff9cb8;
+  background:rgba(255,52,105,.11);
+  border:1px solid rgba(255,52,105,.35);
 }
 
-.page.active {
-    display: block;
-
-    animation:
-        pageIn .25s ease;
+.auth-success{
+  color:#8affc9;
+  background:rgba(50,255,170,.08);
+  border:1px solid rgba(50,255,170,.25);
 }
-
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
 
-    to {
-        opacity: 1;
-        transform: none;
-    }
+.small-link{
+  display:block;
+  text-align:center;
+  color:#b9a6ff;
+  font-size:13px;
+  margin-top:15px;
+  cursor:pointer;
 }
 
-/* =========================================================
-   HOME
-========================================================= */
+/* APP */
 
-.hero {
-    position: relative;
-
-    overflow: hidden;
-
-    padding: 34px;
-
-    border-radius: 28px;
+#mainApp{
+  min-height:100vh;
 }
-
-.hero:after {
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
 
-    right: -160px;
-    top: -180px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(217,70,239,.28),
-            transparent 68%
-        );
-
-    pointer-events: none;
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  background:rgba(6,5,12,.68);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
 }
-
-.kicker {
-    color: #a78bfa;
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
 
-    font-size: 12px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-family:"Space Grotesk",sans-serif;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
-.hero h2 {
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        clamp(34px, 5vw, 60px);
-
-    line-height: 1;
-
-    margin:
-        12px 0;
+.brand-icon{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#365cff,#c63dff);
 }
 
-.gradient-text {
-    background:
-        linear-gradient(
-            90deg,
-            #a78bfa,
-            #60a5fa,
-            #e879f9
-        );
-
-    -webkit-background-clip: text;
-
-    color: transparent;
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-
-.hero p {
-    color: var(--muted);
 
-    max-width: 700px;
-
-    line-height: 1.7;
+.nav-actions button{
+  border:1px solid transparent;
+  background:transparent;
+  color:#bdb6cd;
+  padding:9px 11px;
+  border-radius:11px;
 }
-
-.cards {
-    display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 16px;
-
-    margin-top: 18px;
+.nav-actions button:hover{
+  background:rgba(255,255,255,.06);
+  color:white;
 }
-
-.card {
-    padding: 20px;
 
-    border-radius: 21px;
+.user-mini{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-left:8px;
 }
 
-.card h3 {
-    margin-top: 0;
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  object-fit:cover;
+  background:linear-gradient(135deg,#6b4cff,#d542ff);
+  border:1px solid rgba(255,255,255,.14);
 }
 
-.muted {
-    color: var(--muted);
+.layout{
+  max-width:1350px;
+  margin:auto;
+  padding:25px;
+  display:grid;
+  grid-template-columns:230px 1fr;
+  gap:20px;
 }
 
-/* =========================================================
-   USERS
-========================================================= */
-
-.section-head {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    margin:
-        6px 0 16px;
+.sidebar{
+  height:max-content;
+  padding:15px;
+  border-radius:20px;
+  position:sticky;
+  top:90px;
 }
-
-.section-head h2 {
-    font-family:
-        "Space Grotesk";
 
-    margin: 0;
+.side-btn{
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  color:#a9a2b8;
+  padding:13px;
+  border-radius:12px;
+  margin-bottom:4px;
 }
 
-.search {
-    display: flex;
-
-    gap: 10px;
-
-    margin-bottom: 16px;
+.side-btn:hover,
+.side-btn.active{
+  color:white;
+  background:rgba(121,87,255,.15);
 }
 
-.search input {
-    flex: 1;
+.content{
+  min-width:0;
 }
 
-.user-list {
-    display: grid;
-
-    gap: 10px;
+.page{
+  display:none;
 }
-
-.user-item {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 12px;
-
-    padding: 13px;
-
-    border-radius: 17px;
-
-    background:
-        rgba(255,255,255,.035);
 
-    border:
-        1px solid var(--line);
+.page.active{
+  display:block;
 }
 
-.user-main {
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    min-width: 0;
+.hero{
+  padding:30px;
+  border-radius:25px;
+  margin-bottom:20px;
+  overflow:hidden;
+  position:relative;
 }
-
-.user-main strong {
-    display: block;
-
-    overflow: hidden;
 
-    text-overflow: ellipsis;
+.hero h1{
+  font-family:"Space Grotesk",sans-serif;
+  font-size:clamp(30px,5vw,52px);
+  line-height:1;
+  margin-bottom:13px;
 }
 
-.user-main small {
-    color: var(--muted);
+.gradient-text{
+  background:linear-gradient(90deg,#fff,#a98aff,#dc65ff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
-.row {
-    display: flex;
-
-    gap: 8px;
-
-    align-items: center;
-
-    flex-wrap: wrap;
+.hero p{
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.7;
 }
-
-/* =========================================================
-   CHAT
-========================================================= */
-
-.chat-shell {
-    min-height: 600px;
-
-    height:
-        calc(100vh - 130px);
 
-    display: grid;
-
-    grid-template-columns:
-        255px 1fr;
-
-    gap: 14px;
+.hero-glow{
+  position:absolute;
+  width:350px;
+  height:350px;
+  right:-130px;
+  top:-170px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(123,67,255,.22),transparent 68%);
 }
 
-.chat-list,
-.chat-main {
-    border-radius: 22px;
-
-    overflow: hidden;
+.grid{
+  display:grid;
+  gap:18px;
 }
 
-.chat-list {
-    padding: 12px;
+.grid-2{
+  grid-template-columns:repeat(2,minmax(0,1fr));
 }
-
-.chat-contact {
-    width: 100%;
-
-    border: 0;
-
-    background: transparent;
-
-    color: white;
-
-    padding: 11px;
-
-    border-radius: 13px;
-
-    text-align: left;
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
+.grid-3{
+  grid-template-columns:repeat(3,minmax(0,1fr));
 }
 
-.chat-contact:hover,
-.chat-contact.active {
-    background:
-        rgba(139,92,246,.13);
+.card{
+  padding:20px;
+  border-radius:20px;
 }
 
-.chat-main {
-    display: grid;
-
-    grid-template-rows:
-        auto 1fr auto;
+.card h3{
+  margin-bottom:7px;
 }
-
-.chat-head {
-    padding: 16px;
-
-    border-bottom:
-        1px solid var(--line);
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
+.muted{
+  color:var(--muted);
 }
-
-.messages {
-    padding: 18px;
-
-    overflow-y: auto;
-
-    display: flex;
-
-    flex-direction: column;
 
-    gap: 9px;
+.stat{
+  font-size:29px;
+  font-weight:800;
+  margin-top:6px;
 }
 
-.message {
-    max-width: 75%;
+/* SEARCH */
 
-    padding: 10px 13px;
-
-    border-radius: 16px;
-
-    background:
-        rgba(255,255,255,.065);
-
-    border:
-        1px solid var(--line);
+.search-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
 }
 
-.message.mine {
-    align-self: flex-end;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(124,58,237,.45),
-            rgba(37,99,235,.35)
-        );
+.user-result{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  margin-bottom:9px;
 }
-
-.message small {
-    display: block;
 
-    color: #a9a3b6;
-
-    font-size: 10px;
-
-    margin-top: 5px;
+.user-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
 }
-
-.chat-compose {
-    padding: 12px;
-
-    display: flex;
-
-    gap: 10px;
 
-    border-top:
-        1px solid var(--line);
+.user-info strong{
+  display:block;
 }
 
-.chat-compose input {
-    flex: 1;
+.user-info small{
+  color:var(--muted);
 }
 
-/* =========================================================
-   SHOP
-========================================================= */
+/* CHAT */
 
-.product-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
+.chat-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:600px;
+  overflow:hidden;
+  border-radius:22px;
 }
-
-.product {
-    padding: 21px;
-
-    border-radius: 22px;
-
-    overflow: hidden;
 
-    position: relative;
+.chat-users{
+  border-right:1px solid var(--border);
+  padding:13px;
+  overflow:auto;
 }
 
-.product-orb {
-    width: 66px;
-    height: 66px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 20px;
-
-    font-size: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b5cf6,
-            #d946ef
-        );
-
-    box-shadow:
-        0 0 35px
-        rgba(217,70,239,.24);
+.chat-user{
+  padding:12px;
+  border-radius:13px;
+  cursor:pointer;
+  margin-bottom:5px;
 }
-
-.price {
-    font-size: 25px;
 
-    font-weight: 800;
-
-    margin:
-        10px 0 15px;
+.chat-user:hover,
+.chat-user.active{
+  background:rgba(121,87,255,.14);
 }
-
-/* =========================================================
-   PROFILE
-========================================================= */
 
-.profile-grid {
-    display: grid;
-
-    grid-template-columns:
-        280px 1fr;
-
-    gap: 16px;
+.chat-main{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
 }
-
-.profile-card {
-    padding: 25px;
 
-    border-radius: 22px;
-
-    text-align: center;
+.chat-header{
+  padding:16px;
+  border-bottom:1px solid var(--border);
 }
-
-.profile-big {
-    width: 115px;
-    height: 115px;
-
-    object-fit: cover;
-
-    border-radius: 34px;
-
-    background: #171526;
 
-    border:
-        1px solid var(--line);
-
-    margin-bottom: 14px;
+.messages{
+  flex:1;
+  padding:18px;
+  overflow:auto;
+  min-height:430px;
+  max-height:520px;
 }
-
-/* =========================================================
-   SETTINGS
-========================================================= */
 
-.settings {
-    display: grid;
-
-    gap: 14px;
+.message{
+  max-width:72%;
+  padding:10px 13px;
+  border-radius:15px;
+  margin-bottom:9px;
+  background:rgba(255,255,255,.07);
+  word-break:break-word;
 }
 
-.setting {
-    padding: 19px;
-
-    border-radius: 21px;
+.message.mine{
+  margin-left:auto;
+  background:linear-gradient(135deg,#6046e9,#9c3ee7);
 }
 
-.setting h3 {
-    margin:
-        0 0 6px;
+.message small{
+  display:block;
+  opacity:.65;
+  margin-top:4px;
+  font-size:10px;
 }
-
-.toggle {
-    display: flex;
 
-    justify-content: space-between;
-
-    align-items: center;
+.chat-input{
+  display:flex;
+  gap:10px;
+  padding:13px;
+  border-top:1px solid var(--border);
 }
-
-.switch {
-    width: 47px;
-    height: 27px;
-
-    padding: 3px;
 
-    border-radius: 99px;
-
-    background:
-        #282434;
+.chat-input input{
+  flex:1;
 }
-
-.switch i {
-    display: block;
-
-    width: 21px;
-    height: 21px;
 
-    border-radius: 50%;
+/* SHOP */
 
-    background: #999;
-
-    transition: .2s;
-}
-
-.switch.on {
-    background:
-        var(--purple);
+.product{
+  position:relative;
+  overflow:hidden;
+  transition:.25s;
 }
 
-.switch.on i {
-    transform:
-        translateX(20px);
-
-    background: white;
+.product:hover{
+  transform:translateY(-4px);
 }
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 500;
-
-    display: none;
-
-    align-items: center;
 
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        rgba(0,0,0,.72);
+.product-icon{
+  width:55px;
+  height:55px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  background:linear-gradient(135deg,rgba(101,74,255,.28),rgba(211,57,255,.22));
+  margin-bottom:15px;
 }
 
-.modal.show {
-    display: flex;
+.price{
+  font-size:22px;
+  font-weight:800;
+  margin:10px 0 15px;
 }
-
-.modal-card {
-    width:
-        min(560px, 100%);
-
-    max-height: 90vh;
-
-    overflow-y: auto;
 
-    padding: 25px;
-
-    border-radius: 24px;
+.cart-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
 }
-
-.modal-head {
-    display: flex;
-
-    justify-content: space-between;
 
-    align-items: center;
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
-
-.close {
-    border: 0;
-
-    background: transparent;
-
-    color: #aaa;
 
-    font-size: 26px;
+.quantity button{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  color:white;
 }
 
-.cart-row {
-    display: flex;
+/* PROFILE */
 
-    justify-content: space-between;
-
-    gap: 10px;
-
-    padding: 13px 0;
-
-    border-bottom:
-        1px solid var(--line);
+.profile-head{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:22px;
 }
-
-.total {
-    font-size: 23px;
-
-    font-weight: 800;
 
-    margin:
-        17px 0;
+.profile-big{
+  width:85px;
+  height:85px;
+  border-radius:25px;
+  object-fit:cover;
+  background:linear-gradient(135deg,#644cff,#d43fff);
 }
-
-/* =========================================================
-   BADGE / EMPTY
-========================================================= */
-
-.badge {
-    display: inline-block;
-
-    padding:
-        4px 9px;
-
-    border-radius: 99px;
-
-    font-size: 11px;
 
-    color: #c4b5fd;
+/* MODAL */
 
-    background:
-        rgba(139,92,246,.13);
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.65);
 }
 
-.empty {
-    padding: 40px;
-
-    text-align: center;
-
-    color: var(--muted);
+.modal.show{
+  display:flex;
 }
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast {
-    position: fixed;
-
-    right: 18px;
-    bottom: 18px;
-
-    z-index: 1000;
-
-    max-width: 380px;
-
-    padding: 13px 16px;
-
-    border-radius: 15px;
-
-    background:
-        #151321;
-
-    border:
-        1px solid var(--line);
 
-    box-shadow:
-        var(--shadow);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform:
-        translateY(12px);
-
-    transition: .25s;
+.modal-card{
+  width:min(550px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:25px;
+  border-radius:23px;
 }
 
-.toast.show {
-    opacity: 1;
+/* TOAST */
 
-    transform:
-        translateY(0);
+#toastContainer{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
-
-/* =========================================================
-   BOTÃO SECRETO
-========================================================= */
-
-.secret-button {
-    position: fixed;
-
-    right: 8px;
-    bottom: 7px;
-
-    z-index: 900;
-
-    width: 22px;
-    height: 22px;
-
-    border: 0;
 
-    background: transparent;
-
-    color:
-        rgba(255,255,255,.035);
-
-    font-size: 11px;
-
-    transition: .3s;
+.toast{
+  max-width:350px;
+  padding:13px 16px;
+  border-radius:14px;
+  color:white;
+  background:rgba(27,22,42,.94);
+  border:1px solid var(--border);
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  animation:toastIn .25s ease;
 }
 
-.secret-button:hover {
-    color:
-        rgba(167,139,250,.45);
+@keyframes toastIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
-
-/* =========================================================
-   SECRET SCREEN
-========================================================= */
-
-.secret-screen {
-    position: fixed;
 
-    inset: 0;
+/* SECRET */
 
-    z-index: 9999;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(91,33,182,.14),
-            transparent 40%
-        ),
-        #010107;
+#secretButton{
+  position:fixed;
+  right:13px;
+  bottom:12px;
+  z-index:90;
+  width:27px;
+  height:27px;
+  border:0;
+  border-radius:50%;
+  color:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.025);
+  cursor:pointer;
+  opacity:.35;
 }
-
-.secret-screen.show {
-    display: flex;
 
-    animation:
-        secretFade .5s ease;
+#secretButton:hover{
+  opacity:1;
 }
 
-@keyframes secretFade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+.secret-screen{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at center,rgba(95,31,155,.18),transparent 35%),
+    #020106;
 }
-
-.secret-content {
-    width:
-        min(720px,100%);
 
-    text-align: center;
+.secret-screen.show{
+  display:flex;
 }
-
-.secret-symbol {
-    font-size: 85px;
-
-    color: #a78bfa;
-
-    text-shadow:
-        0 0 25px #8b5cf6,
-        0 0 70px #d946ef;
 
-    animation:
-        secretPulse 2s infinite;
+.secret-box{
+  width:min(650px,100%);
+  text-align:center;
+  padding:50px 30px;
+  border-radius:30px;
+  border:1px solid rgba(180,100,255,.18);
+  background:rgba(8,5,15,.85);
+  box-shadow:0 0 100px rgba(117,39,255,.12);
 }
 
-@keyframes secretPulse {
-    50% {
-        transform:
-            scale(1.06);
-
-        filter:
-            brightness(1.3);
-    }
+.secret-symbol{
+  font-size:70px;
+  margin-bottom:20px;
+  animation:pulse 2.4s infinite;
 }
-
-.secret-title {
-    font-family:
-        "Space Grotesk";
-
-    font-size:
-        clamp(28px,6vw,65px);
 
-    letter-spacing:
-        5px;
-
-    margin:
-        18px 0;
+@keyframes pulse{
+  50%{
+    transform:scale(1.07);
+    filter:drop-shadow(0 0 20px #a84cff);
+  }
 }
 
-.secret-text {
-    color:
-        #898398;
-
-    line-height:
-        1.8;
+.secret-box h1{
+  font-family:"Space Grotesk";
+  margin-bottom:12px;
 }
-
-.secret-code {
-    margin:
-        22px auto;
 
-    max-width: 500px;
-
-    padding: 15px;
-
-    border-radius: 15px;
-
-    border:
-        1px solid
-        rgba(139,92,246,.28);
-
-    background:
-        rgba(139,92,246,.06);
-
-    color:
-        #c4b5fd;
-
-    font-family:
-        monospace;
+.secret-box p{
+  color:#9c94ad;
+  line-height:1.7;
 }
-
-/* =========================================================
-   RESPONSIVO
-========================================================= */
-
-@media(max-width:1050px) {
 
-    .layout {
-        grid-template-columns: 1fr;
-    }
+/* RESPONSIVE */
 
-    .sidebar {
-        position: static;
+@media(max-width:900px){
+  .layout{
+    grid-template-columns:1fr;
+  }
 
-        height: auto;
-    }
+  .sidebar{
+    position:static;
+    display:flex;
+    overflow:auto;
+    gap:5px;
+  }
 
-    .nav {
-        grid-template-columns:
-            repeat(4,1fr);
-    }
+  .side-btn{
+    white-space:nowrap;
+    width:auto;
+  }
 
-    .cards,
-    .product-grid {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+  .grid-3{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .profile-grid {
-        grid-template-columns: 1fr;
-    }
+  .chat-layout{
+    grid-template-columns:190px 1fr;
+  }
 }
 
-@media(max-width:700px) {
+@media(max-width:650px){
+  .navbar{
+    padding:0 13px;
+  }
 
-    .topbar {
-        padding: 0 12px;
-    }
+  .nav-actions button{
+    display:none;
+  }
 
-    .layout {
-        padding: 12px;
-    }
+  .user-mini span{
+    display:none;
+  }
 
-    .nav {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+  .layout{
+    padding:13px;
+  }
 
-    .cards,
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
+  .grid-2,
+  .grid-3{
+    grid-template-columns:1fr;
+  }
 
-    .chat-shell {
-        grid-template-columns: 1fr;
+  .auth-card{
+    padding:23px;
+  }
 
-        height:
-            calc(100vh - 170px);
-    }
+  .hero{
+    padding:22px;
+  }
 
-    .chat-list {
-        max-height: 155px;
+  .chat-layout{
+    grid-template-columns:1fr;
+  }
 
-        overflow-y: auto;
-    }
+  .chat-users{
+    max-height:160px;
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
 
-    .auth-box {
-        padding: 24px;
-    }
+  .messages{
+    min-height:350px;
+  }
 
-    .hero {
-        padding: 24px;
-    }
-
-    .message {
-        max-width: 90%;
-    }
-
-    .hide-mobile {
-        display: none !important;
-    }
+  .message{
+    max-width:88%;
+  }
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="grid-background"></div>
 <canvas id="particles"></canvas>
 
-<!-- ======================================================
-     CONFIGURAÇÃO PRINCIPAL
-     
-     🔑 CHAVE PÚBLICA: LINHA ABAIXO
-     📱 WHATSAPP: LINHA ABAIXO
-====================================================== -->
+<div class="app">
+
+<!-- AUTH -->
+<section id="authScreen">
+
+  <div class="auth-card glass">
+
+    <div class="logo">✦</div>
+
+    <div class="auth-title">
+      NOVA <span>COMMUNITY</span>
+    </div>
+
+    <div class="auth-subtitle">
+      Seu espaço. Suas pessoas. Seu mundo.
+    </div>
+
+    <div id="authMessage"></div>
+
+    <div class="tabs">
+      <button id="loginTab" class="active" onclick="showAuth('login')">
+        Login
+      </button>
+
+      <button id="registerTab" onclick="showAuth('register')">
+        Cadastro
+      </button>
+    </div>
+
+    <!-- LOGIN -->
+
+    <form id="loginForm">
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input id="loginEmail" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button class="primary" style="width:100%">
+        Entrar
+      </button>
+
+      <span class="small-link" onclick="showRecovery()">
+        Esqueci minha senha
+      </span>
+
+    </form>
+
+    <!-- REGISTER -->
+
+    <form id="registerForm" class="hidden">
+
+      <div class="form-group">
+        <label>Nome de usuário</label>
+        <input id="registerUsername" maxlength="24" required>
+      </div>
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input id="registerEmail" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <input id="registerPassword" type="password" minlength="6" autocomplete="new-password" required>
+      </div>
+
+      <div class="form-group">
+        <label>Usuário Roblox</label>
+        <input id="registerRoblox" maxlength="32">
+      </div>
+
+      <button class="primary" style="width:100%">
+        Criar minha conta
+      </button>
+
+    </form>
+
+    <!-- RECOVERY -->
+
+    <form id="recoveryForm" class="hidden">
+
+      <h3 style="margin-bottom:8px">Recuperar senha</h3>
+
+      <p class="muted" style="font-size:13px;margin-bottom:18px">
+        Digite seu e-mail para solicitar a recuperação.
+      </p>
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input id="recoveryEmail" type="email" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="secondary" onclick="showAuth('login')">
+          Voltar
+        </button>
+
+        <button class="primary">
+          Enviar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN APP -->
+
+<section id="mainApp" class="hidden">
+
+  <header class="navbar glass">
+
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <span>NOVA COMMUNITY</span>
+    </div>
+
+    <div class="nav-actions">
+
+      <button onclick="openPage('home')">Início</button>
+      <button onclick="openPage('friends')">Pessoas</button>
+      <button onclick="openPage('chat')">Chat</button>
+      <button onclick="openPage('shop')">Loja</button>
+
+      <div class="user-mini">
+        <img id="navAvatar" class="avatar" src="">
+        <span id="navUsername">...</span>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="layout">
+
+    <aside class="sidebar glass">
+
+      <button class="side-btn active" data-page="home" onclick="openPage('home')">
+        ✦ Início
+      </button>
+
+      <button class="side-btn" data-page="profile" onclick="openPage('profile')">
+        👤 Meu perfil
+      </button>
+
+      <button class="side-btn" data-page="friends" onclick="openPage('friends')">
+        🤝 Pessoas
+      </button>
+
+      <button class="side-btn" data-page="chat" onclick="openPage('chat')">
+        💬 Chat
+      </button>
+
+      <button class="side-btn" data-page="shop" onclick="openPage('shop')">
+        🛒 Loja
+      </button>
+
+      <button class="side-btn" data-page="orders" onclick="openPage('orders')">
+        📦 Pedidos
+      </button>
+
+      <button class="side-btn" data-page="roblox" onclick="openPage('roblox')">
+        🎮 Roblox
+      </button>
+
+      <button class="side-btn" data-page="settings" onclick="openPage('settings')">
+        ⚙️ Configurações
+      </button>
+
+      <button class="side-btn" onclick="logout()">
+        🚪 Sair
+      </button>
+
+    </aside>
+
+
+    <main class="content">
+
+      <!-- HOME -->
+
+      <div id="page-home" class="page active">
+
+        <section class="hero glass">
+
+          <div class="hero-glow"></div>
+
+          <h1>
+            Bem-vindo ao<br>
+            <span class="gradient-text">NOVA COMMUNITY.</span>
+          </h1>
+
+          <p>
+            Uma comunidade feita para conversar, conhecer pessoas,
+            compartilhar interesses e criar seu próprio espaço.
+          </p>
+
+          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+
+            <button class="primary" onclick="openPage('friends')">
+              Encontrar pessoas
+            </button>
+
+            <button class="secondary" onclick="openPage('chat')">
+              Abrir chat
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <div class="grid grid-3">
+
+          <div class="card glass">
+            <div class="muted">Usuário</div>
+            <div id="homeUsername" class="stat">—</div>
+          </div>
+
+          <div class="card glass">
+            <div class="muted">Amigos</div>
+            <div id="homeFriends" class="stat">0</div>
+          </div>
+
+          <div class="card glass">
+            <div class="muted">Pedidos</div>
+            <div id="homeOrders" class="stat">0</div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROFILE -->
+
+      <div id="page-profile" class="page">
+
+        <div class="card glass">
+
+          <div class="profile-head">
+
+            <img id="profileAvatar" class="profile-big" src="">
+
+            <div>
+              <h2 id="profileName">Perfil</h2>
+              <p class="muted" id="profileRobloxText"></p>
+            </div>
+
+          </div>
+
+          <div class="grid grid-2">
+
+            <div class="form-group">
+              <label>Nome de usuário</label>
+              <input id="profileUsername">
+            </div>
+
+            <div class="form-group">
+              <label>Usuário Roblox</label>
+              <input id="profileRoblox">
+            </div>
+
+            <div class="form-group" style="grid-column:1/-1">
+              <label>URL do avatar</label>
+              <input id="profileAvatarUrl" placeholder="https://...">
+            </div>
+
+          </div>
+
+          <button class="primary" onclick="saveProfile()">
+            Salvar perfil
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- FRIENDS -->
+
+      <div id="page-friends" class="page">
+
+        <div class="card glass">
+
+          <h2>🔎 Encontrar pessoas</h2>
+
+          <p class="muted" style="margin:7px 0 18px">
+            Procure usuários da comunidade.
+          </p>
+
+          <div class="search-box">
+            <input id="userSearch" placeholder="Digite um nome de usuário">
+            <button class="primary" onclick="searchUsers()">Buscar</button>
+          </div>
+
+          <div id="searchResults"></div>
+
+        </div>
+
+
+        <div class="card glass" style="margin-top:18px">
+
+          <h2>🤝 Minhas conexões</h2>
+
+          <div id="friendList" style="margin-top:15px"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CHAT -->
+
+      <div id="page-chat" class="page">
+
+        <div class="chat-layout glass">
+
+          <aside class="chat-users">
+
+            <h3 style="padding:8px 8px 12px">Conversas</h3>
+
+            <div id="chatUsers"></div>
+
+          </aside>
+
+          <section class="chat-main">
+
+            <div class="chat-header">
+              <strong id="chatTitle">Selecione uma pessoa</strong>
+            </div>
+
+            <div id="messages" class="messages"></div>
+
+            <form class="chat-input" onsubmit="sendMessage(event)">
+
+              <input
+                id="messageInput"
+                placeholder="Escreva uma mensagem..."
+                autocomplete="off"
+                disabled
+              >
+
+              <button class="primary" id="sendMessageButton" disabled>
+                Enviar
+              </button>
+
+            </form>
+
+          </section>
+
+        </div>
+
+      </div>
+
+
+      <!-- SHOP -->
+
+      <div id="page-shop" class="page">
+
+        <div class="hero glass">
+
+          <h1>🛒 Loja</h1>
+
+          <p>
+            Produtos e serviços da comunidade.
+            O pagamento e a entrega são tratados com segurança pelo responsável da loja.
+          </p>
+
+        </div>
+
+        <div id="productsGrid" class="grid grid-3"></div>
+
+        <div class="card glass" style="margin-top:20px">
+
+          <h2>🛒 Carrinho</h2>
+
+          <div id="cartItems" style="margin-top:12px"></div>
+
+          <div style="display:flex;justify-content:space-between;margin-top:18px">
+            <strong>Total</strong>
+            <strong id="cartTotal">R$ 0,00</strong>
+          </div>
+
+          <button
+            class="primary"
+            style="width:100%;margin-top:15px"
+            onclick="checkout()"
+          >
+            Finalizar pedido
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ORDERS -->
+
+      <div id="page-orders" class="page">
+
+        <div class="card glass">
+
+          <h2>📦 Meus pedidos</h2>
+
+          <div id="ordersList" style="margin-top:18px"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ROBLOX -->
+
+      <div id="page-roblox" class="page">
+
+        <div class="hero glass">
+
+          <h1>🎮 Roblox</h1>
+
+          <p>
+            Acesse os serviços oficiais do Roblox.
+          </p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+
+            <a
+              class="primary"
+              href="https://www.roblox.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="display:inline-block"
+            >
+              Abrir Roblox
+            </a>
+
+            <a
+              class="secondary"
+              href="https://www.roblox.com/pt/giftcards"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="display:inline-block"
+            >
+              Cartões oficiais
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="card glass">
+
+          <h2>⚠️ Segurança</h2>
+
+          <p class="muted" style="line-height:1.7;margin-top:10px">
+            Nunca envie sua senha, cookie, código de autenticação ou informações
+            da sua conta Roblox para outras pessoas.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- SETTINGS -->
+
+      <div id="page-settings" class="page">
+
+        <div class="grid grid-2">
+
+          <div class="card glass">
+
+            <h2>🔐 Segurança</h2>
+
+            <p class="muted" style="margin:7px 0 18px">
+              Altere a senha da sua conta.
+            </p>
+
+            <div class="form-group">
+              <label>Nova senha</label>
+              <input id="newPassword" type="password" minlength="6">
+            </div>
+
+            <button class="primary" onclick="changePassword()">
+              Alterar senha
+            </button>
+
+          </div>
+
+
+          <div class="card glass">
+
+            <h2>📩 E-mail</h2>
+
+            <p class="muted" style="margin:7px 0 18px">
+              Atualize o e-mail da conta.
+            </p>
+
+            <div class="form-group">
+              <label>Novo e-mail</label>
+              <input id="newEmail" type="email">
+            </div>
+
+            <button class="primary" onclick="changeEmail()">
+              Alterar e-mail
+            </button>
+
+          </div>
+
+
+          <div class="card glass">
+
+            <h2>👁️ Privacidade</h2>
+
+            <p class="muted" style="line-height:1.7">
+              Seu perfil público pode mostrar seu nome de usuário,
+              avatar e usuário Roblox.
+            </p>
+
+          </div>
+
+
+          <div class="card glass">
+
+            <h2>🚪 Conta</h2>
+
+            <p class="muted" style="margin:7px 0 18px">
+              Encerrar sua sessão neste dispositivo.
+            </p>
+
+            <button class="danger" onclick="logout()">
+              Sair da conta
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+  <div class="modal-card glass">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+
+      <h2 id="modalTitle">NOVA</h2>
+
+      <button
+        class="secondary"
+        onclick="closeModal()"
+        style="padding:7px 10px"
+      >
+        ✕
+      </button>
+
+    </div>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+<!-- SECRET -->
+
+<button id="secretButton" onclick="secretClick()">◈</button>
+
+<div id="secretScreen" class="secret-screen">
+
+  <div class="secret-box">
+
+    <div class="secret-symbol">◈</div>
+
+    <h1>VOCÊ ENCONTROU.</h1>
+
+    <p>
+      Nem tudo nesta comunidade precisa ser explicado.
+      Algumas coisas existem apenas porque alguém decidiu escondê-las.
+    </p>
+
+    <p style="margin-top:15px">
+      <strong>STATUS: DESCONHECIDO</strong>
+    </p>
+
+    <button
+      class="secondary"
+      style="margin-top:25px"
+      onclick="closeSecret()"
+    >
+      Voltar
+    </button>
+
+  </div>
+
+</div>
+
+
+<div id="toastContainer"></div>
+
+</div>
+
 
 <script>
+
+/* =========================================================
+   CONFIGURAÇÃO
+   ========================================================= */
 
 const SUPABASE_URL =
 "https://tqrsktuhkcpkvymuqcfs.supabase.co";
@@ -1545,3819 +1514,1919 @@ const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_14geRaipRyTfs2ZVuUk1Sg_UfWoh49Q";
 
 const WHATSAPP_DA_LOJA =
-"5511981946138";
+"91981946138";
+
+
+/* =========================================================
+   SUPABASE
+   ========================================================= */
+
+const { createClient } = supabase;
+
+const db = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY,
+  {
+    auth:{
+      persistSession:true,
+      autoRefreshToken:true,
+      detectSessionInUrl:true
+    }
+  }
+);
 
-</script>
-
-<!-- ======================================================
-     AUTENTICAÇÃO
-====================================================== -->
-
-<div id="authScreen" class="auth-screen">
-
-<div class="auth-box glass">
-
-<div class="brand">
-
-<div class="logo">
-✦
-</div>
-
-<h1>
-NOVA <span>COMMUNITY</span>
-</h1>
-
-<p>
-Seu espaço. Suas pessoas. Seu mundo.
-</p>
-
-</div>
-
-<div id="authAlert"></div>
-
-<div class="tabs">
-
-<button
-id="loginTab"
-class="active"
-onclick="showAuth('login')">
-
-Login
-
-</button>
-
-<button
-id="signupTab"
-onclick="showAuth('signup')">
-
-Cadastro
-
-</button>
-
-</div>
-
-<!-- LOGIN -->
-
-<div id="loginForm">
-
-<div class="field">
-
-<label>
-Email
-</label>
-
-<input
-id="loginEmail"
-type="email"
-autocomplete="email"
-placeholder="seu@email.com"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Senha
-</label>
-
-<input
-id="loginPassword"
-type="password"
-autocomplete="current-password"
-placeholder="Sua senha"
->
-
-</div>
-
-<button
-class="primary-button full"
-onclick="login()">
-
-Entrar
-
-</button>
-
-<div class="auth-links">
-
-<button
-class="link-button"
-onclick="showAuth('forgot')">
-
-Esqueci minha senha
-
-</button>
-
-</div>
-
-</div>
-
-<!-- CADASTRO -->
-
-<div
-id="signupForm"
-class="hidden">
-
-<div class="field">
-
-<label>
-Nome de usuário
-</label>
-
-<input
-id="signupUsername"
-maxlength="24"
-placeholder="Como você será conhecido?"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Email
-</label>
-
-<input
-id="signupEmail"
-type="email"
-autocomplete="email"
-placeholder="seu@email.com"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Senha
-</label>
-
-<input
-id="signupPassword"
-type="password"
-minlength="6"
-autocomplete="new-password"
-placeholder="Mínimo de 6 caracteres"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Usuário Roblox
-</label>
-
-<input
-id="signupRoblox"
-maxlength="40"
-placeholder="Seu usuário no Roblox"
->
-
-</div>
-
-<button
-class="primary-button full"
-onclick="signup()">
-
-Criar minha conta
-
-</button>
-
-</div>
-
-<!-- RECUPERAÇÃO -->
-
-<div
-id="forgotForm"
-class="hidden">
-
-<div class="field">
-
-<label>
-Email da conta
-</label>
-
-<input
-id="forgotEmail"
-type="email"
-placeholder="Digite seu email"
->
-
-</div>
-
-<button
-class="primary-button full"
-onclick="sendRecovery()">
-
-Enviar recuperação
-
-</button>
-
-<div class="auth-links">
-
-<button
-class="link-button"
-onclick="showAuth('login')">
-
-Voltar para o login
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ======================================================
-     APLICAÇÃO
-====================================================== -->
-
-<div
-id="app"
-class="hidden">
-
-<header class="topbar">
-
-<div class="mini-brand">
-
-<div class="mini-logo">
-✦
-</div>
-
-NOVA COMMUNITY
-
-</div>
-
-<div class="top-actions">
-
-<span
-id="presenceLabel"
-class="badge">
-
-● online
-
-</span>
-
-<img
-id="topAvatar"
-class="avatar"
-alt=""
->
-
-<button
-class="link-button hide-mobile"
-onclick="go('profile')">
-
-<span id="topUsername">
-Perfil
-</span>
-
-</button>
-
-<button
-class="link-button"
-onclick="logout()">
-
-Sair
-
-</button>
-
-</div>
-
-</header>
-
-
-<div class="layout">
-
-<!-- ====================================================
-     SIDEBAR
-==================================================== -->
-
-<aside class="sidebar glass">
-
-<nav class="nav">
-
-<button
-data-page="home"
-onclick="go('home')">
-
-⌂ Início
-
-</button>
-
-<button
-data-page="people"
-onclick="go('people')">
-
-◉ Usuários
-
-</button>
-
-<button
-data-page="chat"
-onclick="go('chat')">
-
-☵ Chat
-
-</button>
-
-<button
-data-page="shop"
-onclick="go('shop')">
-
-◇ Loja
-
-</button>
-
-<button
-data-page="orders"
-onclick="go('orders')">
-
-▣ Pedidos
-
-</button>
-
-<button
-data-page="profile"
-onclick="go('profile')">
-
-◎ Perfil
-
-</button>
-
-<button
-data-page="settings"
-onclick="go('settings')">
-
-⚙ Configurações
-
-</button>
-
-</nav>
-
-<div class="sidebar-bottom">
-
-<div
-class="card glass">
-
-<small class="muted">
-NOVA COMMUNITY
-</small>
-
-<h3>
-V3
-</h3>
-
-<p class="muted">
-Um lugar para pessoas reais.
-</p>
-
-</div>
-
-</div>
-
-</aside>
-
-
-<!-- ====================================================
-     CONTEÚDO
-==================================================== -->
-
-<main class="content">
-
-
-<!-- HOME -->
-
-<section
-id="page-home"
-class="page">
-
-<div class="hero glass">
-
-<div class="kicker">
-NOVA COMMUNITY
-</div>
-
-<h2>
-
-Seu espaço.<br>
-
-<span class="gradient-text">
-Suas pessoas.
-</span>
-
-</h2>
-
-<p>
-
-Uma comunidade com perfis,
-amizades, chat público e privado,
-loja, pedidos e alguns segredos
-escondidos pelo sistema.
-
-</p>
-
-<div class="row">
-
-<button
-class="primary-button"
-onclick="go('people')">
-
-Encontrar pessoas
-
-</button>
-
-<button
-class="secondary-button"
-onclick="go('shop')">
-
-Abrir loja
-
-</button>
-
-</div>
-
-</div>
-
-
-<div class="cards">
-
-<div class="card glass">
-
-<h3>
-💬 Chat
-</h3>
-
-<p class="muted">
-
-Converse no espaço público
-ou abra uma conversa privada.
-
-</p>
-
-</div>
-
-
-<div class="card glass">
-
-<h3>
-🎮 Roblox
-</h3>
-
-<p class="muted">
-
-Coloque seu usuário Roblox
-no seu perfil.
-
-</p>
-
-</div>
-
-
-<div class="card glass">
-
-<h3>
-✨ Sistema
-</h3>
-
-<p class="muted">
-
-Existem partes da comunidade
-que não aparecem no menu.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- USUÁRIOS -->
-
-<section
-id="page-people"
-class="page">
-
-<div class="section-head">
-
-<h2>
-Usuários
-</h2>
-
-</div>
-
-<div class="search">
-
-<input
-id="userSearch"
-placeholder="Buscar usuários..."
->
-
-<button
-class="primary-button"
-onclick="searchUsers()">
-
-Buscar
-
-</button>
-
-</div>
-
-<div
-id="userResults"
-class="user-list">
-
-</div>
-
-</section>
-
-
-<!-- CHAT -->
-
-<section
-id="page-chat"
-class="page">
-
-<div class="chat-shell">
-
-<aside
-class="chat-list glass">
-
-<button
-id="publicChatButton"
-class="chat-contact active"
-onclick="openPublicChat()">
-
-🌐
-
-<span>
-Chat público
-</span>
-
-</button>
-
-<div
-id="privateContacts">
-
-</div>
-
-</aside>
-
-
-<section
-class="chat-main glass">
-
-<div class="chat-head">
-
-<strong id="chatTitle">
-Chat público
-</strong>
-
-<span
-class="badge">
-
-tempo real
-
-</span>
-
-</div>
-
-
-<div
-id="messages"
-class="messages">
-
-<div class="empty">
-
-Carregando mensagens...
-
-</div>
-
-</div>
-
-
-<div class="chat-compose">
-
-<input
-id="messageInput"
-maxlength="1000"
-placeholder="Escreva uma mensagem..."
-onkeydown="
-if(event.key === 'Enter')
-sendMessage()
-">
-
-<button
-class="primary-button"
-onclick="sendMessage()">
-
-Enviar
-
-</button>
-
-</div>
-
-</section>
-
-</div>
-
-</section>
-
-
-<!-- LOJA -->
-
-<section
-id="page-shop"
-class="page">
-
-<div class="section-head">
-
-<h2>
-Loja
-</h2>
-
-<button
-class="secondary-button"
-onclick="openCart()">
-
-🛒 Carrinho
-(
-<span id="cartCount">
-0
-</span>
-)
-
-</button>
-
-</div>
-
-<div
-id="products"
-class="product-grid">
-
-</div>
-
-</section>
-
-
-<!-- PEDIDOS -->
-
-<section
-id="page-orders"
-class="page">
-
-<div class="section-head">
-
-<h2>
-Meus pedidos
-</h2>
-
-</div>
-
-<div
-id="orders"
-class="user-list">
-
-</div>
-
-</section>
-
-
-<!-- PERFIL -->
-
-<section
-id="page-profile"
-class="page">
-
-<div class="profile-grid">
-
-<div
-class="profile-card glass">
-
-<img
-id="profileAvatar"
-class="profile-big"
-alt=""
->
-
-<h2 id="profileName">
-Usuário
-</h2>
-
-<p
-id="profileRoblox"
-class="muted">
-
-Roblox: —
-
-</p>
-
-<span class="badge">
-● online
-</span>
-
-</div>
-
-
-<div
-class="card glass">
-
-<div class="section-head">
-
-<h2>
-Editar perfil
-</h2>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Nome de usuário
-</label>
-
-<input
-id="profileUsername"
-maxlength="24"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Usuário Roblox
-</label>
-
-<input
-id="profileRobloxInput"
-maxlength="40"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-URL do avatar
-</label>
-
-<input
-id="profileAvatarInput"
-placeholder="https://..."
->
-
-</div>
-
-
-<button
-class="primary-button full"
-onclick="saveProfile()">
-
-Salvar perfil
-
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONFIGURAÇÕES -->
-
-<section
-id="page-settings"
-class="page">
-
-<div class="section-head">
-
-<h2>
-Configurações
-</h2>
-
-</div>
-
-
-<div class="settings">
-
-
-<div
-class="setting glass">
-
-<h3>
-🔐 Segurança
-</h3>
-
-<p class="muted">
-Troque sua senha.
-</p>
-
-<div class="field">
-
-<input
-id="newPassword"
-type="password"
-placeholder="Nova senha"
->
-
-</div>
-
-<button
-class="secondary-button"
-onclick="changePassword()">
-
-Alterar senha
-
-</button>
-
-</div>
-
-
-<div
-class="setting glass">
-
-<h3>
-📩 Email
-</h3>
-
-<p class="muted">
-Atualize o email da sua conta.
-</p>
-
-<div class="field">
-
-<input
-id="newEmail"
-type="email"
-placeholder="Novo email"
->
-
-</div>
-
-<button
-class="secondary-button"
-onclick="changeEmail()">
-
-Alterar email
-
-</button>
-
-</div>
-
-
-<div
-class="setting glass">
-
-<div class="toggle">
-
-<div>
-
-<h3>
-🎵 Som
-</h3>
-
-<p class="muted">
-
-Ativar efeitos sonoros.
-
-</p>
-
-</div>
-
-<div
-id="soundSwitch"
-class="switch"
-onclick="toggleSound()">
-
-<i></i>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="setting glass">
-
-<h3>
-🚪 Conta
-</h3>
-
-<p class="muted">
-Sair deste dispositivo.
-</p>
-
-<button
-class="danger-button"
-onclick="logout()">
-
-Sair da conta
-
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-</div>
-
-</div>
-
-
-<!-- ======================================================
-     BOTÃO SECRETO
-====================================================== -->
-
-<button
-class="secret-button"
-onclick="secretClick()">
-
-◈
-
-</button>
-
-
-<!-- ======================================================
-     TELA SECRETA
-====================================================== -->
-
-<div
-id="secretScreen"
-class="secret-screen">
-
-<div class="secret-content">
-
-<div class="secret-symbol">
-◈
-</div>
-
-<div class="secret-title">
-NOVA // ARCHIVE
-</div>
-
-<p
-id="secretMessage"
-class="secret-text">
-
-ACCESSING HIDDEN LAYER...
-
-</p>
-
-<div
-id="secretCode"
-class="secret-code">
-
-05 / 05 — CONNECTION ACCEPTED
-
-</div>
-
-<button
-class="secondary-button"
-onclick="closeSecret()">
-
-Voltar
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ======================================================
-     CARRINHO
-====================================================== -->
-
-<div
-id="cartModal"
-class="modal">
-
-<div
-class="modal-card glass">
-
-<div class="modal-head">
-
-<h2>
-Seu carrinho
-</h2>
-
-<button
-class="close"
-onclick="closeCart()">
-
-×
-
-</button>
-
-</div>
-
-<div
-id="cartItems">
-
-</div>
-
-<div class="total">
-
-Total:
-R$
-<span id="cartTotal">
-0,00
-</span>
-
-</div>
-
-<button
-class="primary-button full"
-onclick="checkout()">
-
-Finalizar pelo WhatsApp
-
-</button>
-
-</div>
-
-</div>
-
-
-<div
-id="toast"
-class="toast">
-
-</div>
-
-
-<script>
 
 /* =========================================================
    ESTADO
-========================================================= */
-
-let supabaseClient = null;
+   ========================================================= */
 
 let currentUser = null;
-
 let currentProfile = null;
 
-let currentChat = {
-    type: "public",
-    id: null
-};
+let currentConversation = null;
+let currentChatUser = null;
+let messageChannel = null;
 
-let realtimeChannel = null;
-
-let cart =
-    JSON.parse(
-        localStorage.getItem("nova_cart") || "[]"
-    );
+let cart = [];
 
 let secretClicks = 0;
-
 let secretTimer = null;
-
-let soundOn = false;
 
 
 /* =========================================================
    PRODUTOS
-========================================================= */
+   ========================================================= */
 
-const products = [
+const PRODUCTS = [
 
-    {
-        id: "robux400",
-        name: "400 Robux",
-        price: 12.90,
-        icon: "R$"
-    },
+  {
+    id:"nova-item-01",
+    name:"NOVA Personalização",
+    description:"Personalização especial dentro da comunidade.",
+    price:5.00,
+    icon:"✦"
+  },
 
-    {
-        id: "robux800",
-        name: "800 Robux",
-        price: 24.90,
-        icon: "R$"
-    },
+  {
+    id:"nova-item-02",
+    name:"NOVA Premium",
+    description:"Um produto digital da comunidade.",
+    price:10.00,
+    icon:"◆"
+  },
 
-    {
-        id: "robux1700",
-        name: "1.700 Robux",
-        price: 49.90,
-        icon: "R$"
-    }
+  {
+    id:"nova-item-03",
+    name:"NOVA Pack",
+    description:"Pacote especial da comunidade.",
+    price:15.00,
+    icon:"✧"
+  }
 
 ];
 
 
 /* =========================================================
-   HELPERS
-========================================================= */
+   UTILIDADES
+   ========================================================= */
 
-function $(id) {
+function escapeHtml(value){
 
-    return document.getElementById(id);
-
-}
-
-
-function escapeHtml(value) {
-
-    return String(value ?? "")
-        .replace(
-            /[&<>"']/g,
-            character => {
-
-                const map = {
-
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#039;"
-
-                };
-
-                return map[character];
-
-            }
-        );
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
 
-function avatarUrl(url, name) {
+function money(value){
 
-    if (url) {
-        return url;
+  return Number(value || 0).toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
     }
-
-    return (
-        "https://ui-avatars.com/api/?name=" +
-        encodeURIComponent(name || "?") +
-        "&background=171526&color=fff&bold=true"
-    );
+  );
 
 }
 
 
-function toast(message) {
+function toast(message){
 
-    const element = $("toast");
+  const box = document.createElement("div");
 
-    element.textContent = message;
+  box.className = "toast";
 
-    element.classList.add("show");
+  box.textContent = message;
 
-    setTimeout(() => {
+  document.getElementById("toastContainer").appendChild(box);
 
-        element.classList.remove("show");
-
-    }, 3500);
+  setTimeout(()=>{
+    box.remove();
+  },3500);
 
 }
 
 
-function authMessage(message, success = false) {
+function setAuthMessage(message,type="error"){
 
-    $("authAlert").innerHTML =
+  const area = document.getElementById("authMessage");
 
-        '<div class="alert ' +
-        (success ? "success" : "error") +
-        '">' +
-        escapeHtml(message) +
-        "</div>";
+  area.innerHTML = `
+    <div class="${type === "success" ? "auth-success":"auth-error"}">
+      ${escapeHtml(message)}
+    </div>
+  `;
+
+}
+
+
+function clearAuthMessage(){
+
+  document.getElementById("authMessage").innerHTML = "";
 
 }
 
 
 /* =========================================================
-   AUTH TABS
-========================================================= */
+   AUTH UI
+   ========================================================= */
 
-function showAuth(mode) {
+function showAuth(type){
 
-    $("loginForm")
-        .classList.toggle(
-            "hidden",
-            mode !== "login"
-        );
+  clearAuthMessage();
 
-    $("signupForm")
-        .classList.toggle(
-            "hidden",
-            mode !== "signup"
-        );
+  document.getElementById("loginForm").classList.toggle(
+    "hidden",
+    type !== "login"
+  );
 
-    $("forgotForm")
-        .classList.toggle(
-            "hidden",
-            mode !== "forgot"
-        );
+  document.getElementById("registerForm").classList.toggle(
+    "hidden",
+    type !== "register"
+  );
 
-    $("loginTab")
-        .classList.toggle(
-            "active",
-            mode === "login"
-        );
+  document.getElementById("recoveryForm").classList.add("hidden");
 
-    $("signupTab")
-        .classList.toggle(
-            "active",
-            mode === "signup"
-        );
+  document.getElementById("loginTab").classList.toggle(
+    "active",
+    type === "login"
+  );
 
-    $("authAlert").innerHTML = "";
+  document.getElementById("registerTab").classList.toggle(
+    "active",
+    type === "register"
+  );
 
 }
 
 
-/* =========================================================
-   SUPABASE
-========================================================= */
+function showRecovery(){
 
-function validateConfig() {
+  clearAuthMessage();
 
-    if (
-        !SUPABASE_PUBLISHABLE_KEY ||
-        SUPABASE_PUBLISHABLE_KEY.includes(
-            "COLE_AQUI"
-        )
-    ) {
+  document.getElementById("loginForm").classList.add("hidden");
+  document.getElementById("registerForm").classList.add("hidden");
+  document.getElementById("recoveryForm").classList.remove("hidden");
 
-        authMessage(
-            "A chave pública do Supabase não foi configurada."
-        );
-
-        return false;
-
-    }
-
-    if (
-        !SUPABASE_URL.startsWith(
-            "https://"
-        )
-    ) {
-
-        authMessage(
-            "A URL do Supabase está inválida."
-        );
-
-        return false;
-
-    }
-
-    return true;
-
-}
-
-
-/* =========================================================
-   CADASTRO
-========================================================= */
-
-async function signup() {
-
-    if (!supabaseClient) {
-
-        authMessage(
-            "O Supabase ainda não foi conectado."
-        );
-
-        return;
-
-    }
-
-    const username =
-        $("signupUsername")
-            .value
-            .trim();
-
-    const email =
-        $("signupEmail")
-            .value
-            .trim();
-
-    const password =
-        $("signupPassword")
-            .value;
-
-    const roblox =
-        $("signupRoblox")
-            .value
-            .trim();
-
-
-    if (!username) {
-
-        authMessage(
-            "Digite um nome de usuário."
-        );
-
-        return;
-
-    }
-
-
-    if (!email) {
-
-        authMessage(
-            "Digite seu email."
-        );
-
-        return;
-
-    }
-
-
-    if (password.length < 6) {
-
-        authMessage(
-            "A senha precisa ter pelo menos 6 caracteres."
-        );
-
-        return;
-
-    }
-
-
-    try {
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient.auth.signUp({
-
-                email,
-
-                password,
-
-                options: {
-
-                    data: {
-
-                        username,
-
-                        roblox_username:
-                            roblox
-
-                    }
-
-                }
-
-            });
-
-
-        if (error) {
-
-            throw error;
-
-        }
-
-
-        if (data.user) {
-
-            if (data.session) {
-
-                await enterApp(
-                    data.user
-                );
-
-            } else {
-
-                authMessage(
-                    "Conta criada! Verifique seu email para confirmar a conta.",
-                    true
-                );
-
-            }
-
-        }
-
-    } catch (error) {
-
-        authMessage(
-            "Erro no cadastro: " +
-            error.message
-        );
-
-    }
+  document.getElementById("loginTab").classList.remove("active");
+  document.getElementById("registerTab").classList.remove("active");
 
 }
 
 
 /* =========================================================
    LOGIN
-========================================================= */
+   ========================================================= */
 
-async function login() {
+document.getElementById("loginForm").addEventListener(
+  "submit",
+  async event => {
 
-    if (!supabaseClient) {
+    event.preventDefault();
 
-        authMessage(
-            "O Supabase ainda não foi conectado."
-        );
-
-        return;
-
-    }
-
+    clearAuthMessage();
 
     const email =
-        $("loginEmail")
-            .value
-            .trim();
+      document.getElementById("loginEmail").value.trim();
 
     const password =
-        $("loginPassword")
-            .value;
+      document.getElementById("loginPassword").value;
 
+    const { data,error } =
+      await db.auth.signInWithPassword({
+        email,
+        password
+      });
 
-    try {
+    if(error){
 
-        const {
-            data,
-            error
-        } =
-            await supabaseClient.auth
-                .signInWithPassword({
+      setAuthMessage(
+        error.message || "Não foi possível entrar."
+      );
 
-                    email,
-
-                    password
-
-                });
-
-
-        if (error) {
-
-            throw error;
-
-        }
-
-
-        await enterApp(
-            data.user
-        );
-
-    } catch (error) {
-
-        authMessage(
-            "Erro no login: " +
-            error.message
-        );
-
+      return;
     }
 
-}
+    currentUser = data.user;
+
+    await startApp();
+
+  }
+);
 
 
 /* =========================================================
-   RECUPERAÇÃO DE SENHA
-========================================================= */
+   CADASTRO
+   ========================================================= */
 
-async function sendRecovery() {
+document.getElementById("registerForm").addEventListener(
+  "submit",
+  async event => {
+
+    event.preventDefault();
+
+    clearAuthMessage();
+
+    const username =
+      document.getElementById("registerUsername")
+      .value
+      .trim();
 
     const email =
-        $("forgotEmail")
-            .value
-            .trim();
+      document.getElementById("registerEmail")
+      .value
+      .trim();
 
+    const password =
+      document.getElementById("registerPassword")
+      .value;
 
-    if (!email) {
+    const roblox =
+      document.getElementById("registerRoblox")
+      .value
+      .trim();
 
-        authMessage(
-            "Digite o email da sua conta."
-        );
+    if(username.length < 3){
 
-        return;
+      setAuthMessage(
+        "O nome de usuário precisa ter pelo menos 3 caracteres."
+      );
 
+      return;
     }
 
+    const { data,error } =
+      await db.auth.signUp({
+        email,
+        password
+      });
 
-    try {
+    if(error){
 
-        const redirect =
-            window.location.href
-                .split("#")[0];
+      setAuthMessage(
+        error.message || "Não foi possível criar a conta."
+      );
+
+      return;
+    }
+
+    if(!data.user){
+
+      setAuthMessage(
+        "A conta não pôde ser criada."
+      );
+
+      return;
+    }
+
+    currentUser = data.user;
+
+    const { error:profileError } =
+      await db.from("profiles").upsert({
+
+        id:data.user.id,
+
+        username,
+
+        roblox_username:roblox || null,
+
+        avatar_url:null
+
+      });
+
+    if(profileError){
+
+      setAuthMessage(
+        "Conta criada, mas o perfil não pôde ser salvo: "
+        + profileError.message
+      );
+
+      return;
+    }
+
+    setAuthMessage(
+      "Conta criada! Você já pode entrar.",
+      "success"
+    );
+
+    showAuth("login");
+
+    document.getElementById("loginEmail").value = email;
+
+  }
+);
 
 
-        const {
-            error
-        } =
-            await supabaseClient.auth
-                .resetPasswordForEmail(
-                    email,
-                    {
-                        redirectTo:
-                            redirect
-                    }
-                );
+/* =========================================================
+   RECUPERAÇÃO
+   ========================================================= */
 
+document.getElementById("recoveryForm").addEventListener(
+  "submit",
+  async event => {
 
-        if (error) {
+    event.preventDefault();
 
-            throw error;
+    const email =
+      document.getElementById("recoveryEmail")
+      .value
+      .trim();
 
+    const redirectTo =
+      window.location.origin +
+      window.location.pathname;
+
+    const { error } =
+      await db.auth.resetPasswordForEmail(
+        email,
+        {
+          redirectTo
         }
+      );
 
+    if(error){
 
-        authMessage(
-            "Se a conta existir, o link de recuperação foi enviado para o email.",
-            true
-        );
+      setAuthMessage(
+        error.message
+      );
 
-    } catch (error) {
-
-        authMessage(
-            "Erro na recuperação: " +
-            error.message
-        );
-
+      return;
     }
+
+    setAuthMessage(
+      "Se esse e-mail existir, as instruções foram enviadas.",
+      "success"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   SESSÃO
+   ========================================================= */
+
+async function checkSession(){
+
+  const { data } =
+    await db.auth.getSession();
+
+  if(data.session){
+
+    currentUser = data.session.user;
+
+    await startApp();
+
+  }
 
 }
 
 
-/* =========================================================
-   ENTRAR NA COMMUNITY
-========================================================= */
+db.auth.onAuthStateChange(
+  async (_event,session) => {
 
-async function enterApp(user) {
+    if(session && !currentUser){
 
-    currentUser = user;
+      currentUser = session.user;
 
-    $("authScreen")
-        .classList
-        .add("hidden");
-
-    $("app")
-        .classList
-        .remove("hidden");
-
-
-    try {
-
-        await loadProfile();
-
-        await loadOrders();
-
-        await loadFriends();
-
-        setupPresence();
-
-        renderProducts();
-
-        renderCart();
-
-        go("home");
-
-    } catch (error) {
-
-        toast(
-            "Conta conectada, mas alguma tabela ainda precisa ser configurada."
-        );
-
-        console.error(error);
+      await startApp();
 
     }
+
+  }
+);
+
+
+/* =========================================================
+   START APP
+   ========================================================= */
+
+async function startApp(){
+
+  if(!currentUser){
+
+    const { data } =
+      await db.auth.getUser();
+
+    currentUser = data.user;
+
+  }
+
+  if(!currentUser){
+
+    return;
+  }
+
+  document.getElementById("authScreen")
+    .classList.add("hidden");
+
+  document.getElementById("mainApp")
+    .classList.remove("hidden");
+
+  await loadProfile();
+
+  renderProducts();
+
+  renderCart();
+
+  await loadFriends();
+
+  await loadOrders();
+
+  updateHomeStats();
 
 }
 
 
 /* =========================================================
    PERFIL
-========================================================= */
+   ========================================================= */
 
-async function loadProfile() {
+async function loadProfile(){
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("profiles")
-            .select("*")
-            .eq("id", currentUser.id)
-            .maybeSingle();
+  if(!currentUser) return;
 
+  let { data,error } =
+    await db
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .maybeSingle();
 
-    if (error) {
+  if(error){
 
-        throw error;
+    toast("Erro ao carregar perfil.");
 
+    return;
+  }
+
+  if(!data){
+
+    const fallbackUsername =
+      currentUser.email
+        ? currentUser.email.split("@")[0]
+        : "usuario";
+
+    const result =
+      await db
+        .from("profiles")
+        .insert({
+
+          id:currentUser.id,
+
+          username:fallbackUsername,
+
+          roblox_username:null,
+
+          avatar_url:null
+
+        })
+        .select()
+        .single();
+
+    if(result.error){
+
+      toast(result.error.message);
+
+      return;
     }
 
+    data = result.data;
 
-    if (data) {
+  }
 
-        currentProfile = data;
+  currentProfile = data;
 
-    } else {
-
-        const metadata =
-            currentUser.user_metadata || {};
-
-
-        const profile = {
-
-            id: currentUser.id,
-
-            username:
-                metadata.username ||
-                "user_" +
-                currentUser.id.slice(0, 6),
-
-            roblox_username:
-                metadata.roblox_username ||
-                "",
-
-            avatar_url: ""
-
-        };
-
-
-        const result =
-            await supabaseClient
-                .from("profiles")
-                .insert(profile)
-                .select()
-                .single();
-
-
-        if (result.error) {
-
-            throw result.error;
-
-        }
-
-
-        currentProfile =
-            result.data;
-
-    }
-
-
-    updateProfileUI();
+  updateProfileUI();
 
 }
 
 
-function updateProfileUI() {
+function avatarFor(profile){
 
-    const profile =
-        currentProfile || {};
+  if(profile?.avatar_url){
 
+    return profile.avatar_url;
 
-    $("topUsername")
-        .textContent =
-        profile.username ||
-        "Perfil";
+  }
 
-
-    $("profileName")
-        .textContent =
-        profile.username ||
-        "Usuário";
-
-
-    $("profileRoblox")
-        .textContent =
-        "Roblox: " +
-        (
-            profile.roblox_username ||
-            "—"
-        );
-
-
-    $("profileUsername")
-        .value =
-        profile.username || "";
-
-
-    $("profileRobloxInput")
-        .value =
-        profile.roblox_username || "";
-
-
-    $("profileAvatarInput")
-        .value =
-        profile.avatar_url || "";
-
-
-    const avatar =
-        avatarUrl(
-            profile.avatar_url,
-            profile.username
-        );
-
-
-    $("topAvatar").src =
-        avatar;
-
-
-    $("profileAvatar").src =
-        avatar;
+  return "https://api.dicebear.com/9.x/initials/svg?seed="
+    + encodeURIComponent(profile?.username || "NOVA");
 
 }
 
 
-async function saveProfile() {
+function updateProfileUI(){
 
-    const username =
-        $("profileUsername")
-            .value
-            .trim();
+  if(!currentProfile) return;
 
-    const roblox =
-        $("profileRobloxInput")
-            .value
-            .trim();
+  const avatar =
+    avatarFor(currentProfile);
 
-    const avatar =
-        $("profileAvatarInput")
-            .value
-            .trim();
+  document.getElementById("navAvatar").src = avatar;
 
+  document.getElementById("profileAvatar").src = avatar;
 
-    if (!username) {
+  document.getElementById("navUsername").textContent =
+    currentProfile.username || "Usuário";
 
-        toast(
-            "O nome de usuário não pode ficar vazio."
-        );
+  document.getElementById("homeUsername").textContent =
+    currentProfile.username || "Usuário";
 
-        return;
+  document.getElementById("profileName").textContent =
+    currentProfile.username || "Usuário";
 
-    }
+  document.getElementById("profileRobloxText").textContent =
+    currentProfile.roblox_username
+      ? "Roblox: " + currentProfile.roblox_username
+      : "Roblox não informado";
 
+  document.getElementById("profileUsername").value =
+    currentProfile.username || "";
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("profiles")
-            .update({
+  document.getElementById("profileRoblox").value =
+    currentProfile.roblox_username || "";
 
-                username,
-
-                roblox_username:
-                    roblox,
-
-                avatar_url:
-                    avatar
-
-            })
-            .eq(
-                "id",
-                currentUser.id
-            )
-            .select()
-            .single();
-
-
-    if (error) {
-
-        toast(
-            "Erro ao salvar perfil: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    currentProfile =
-        data;
-
-
-    updateProfileUI();
-
-    toast(
-        "Perfil atualizado ✨"
-    );
+  document.getElementById("profileAvatarUrl").value =
+    currentProfile.avatar_url || "";
 
 }
 
 
-/* =========================================================
-   SENHA / EMAIL
-========================================================= */
+async function saveProfile(){
 
-async function changePassword() {
+  if(!currentUser) return;
 
-    const password =
-        $("newPassword").value;
+  const username =
+    document.getElementById("profileUsername")
+      .value
+      .trim();
 
+  const roblox =
+    document.getElementById("profileRoblox")
+      .value
+      .trim();
 
-    if (password.length < 6) {
+  const avatar =
+    document.getElementById("profileAvatarUrl")
+      .value
+      .trim();
 
-        toast(
-            "A nova senha precisa ter pelo menos 6 caracteres."
-        );
+  if(username.length < 3){
 
-        return;
+    toast("Nome de usuário muito curto.");
 
-    }
+    return;
+  }
 
+  const { error } =
+    await db
+      .from("profiles")
+      .update({
 
-    const {
-        error
-    } =
-        await supabaseClient.auth
-            .updateUser({
-                password
-            });
+        username,
 
+        roblox_username:roblox || null,
 
-    if (error) {
+        avatar_url:avatar || null
 
-        toast(
-            error.message
-        );
+      })
+      .eq("id",currentUser.id);
 
-        return;
+  if(error){
 
-    }
+    toast(error.message);
 
+    return;
+  }
 
-    $("newPassword")
-        .value = "";
+  await loadProfile();
 
-
-    toast(
-        "Senha alterada com segurança 🔐"
-    );
-
-}
-
-
-async function changeEmail() {
-
-    const email =
-        $("newEmail")
-            .value
-            .trim();
-
-
-    if (!email) {
-
-        toast(
-            "Digite o novo email."
-        );
-
-        return;
-
-    }
-
-
-    const {
-        error
-    } =
-        await supabaseClient.auth
-            .updateUser({
-                email
-            });
-
-
-    if (error) {
-
-        toast(
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    $("newEmail")
-        .value = "";
-
-
-    toast(
-        "Confira seu email para confirmar a alteração 📩"
-    );
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logout() {
-
-    if (supabaseClient) {
-
-        await supabaseClient
-            .auth
-            .signOut();
-
-    }
-
-
-    currentUser = null;
-
-    currentProfile = null;
-
-
-    $("app")
-        .classList
-        .add("hidden");
-
-
-    $("authScreen")
-        .classList
-        .remove("hidden");
-
-
-    showAuth("login");
+  toast("Perfil atualizado!");
 
 }
 
 
 /* =========================================================
    NAVEGAÇÃO
-========================================================= */
+   ========================================================= */
 
-function go(page) {
+function openPage(page){
 
-    document
-        .querySelectorAll(".page")
-        .forEach(
-            pageElement =>
-                pageElement
-                    .classList
-                    .remove("active")
-        );
+  document.querySelectorAll(".page")
+    .forEach(el => el.classList.remove("active"));
 
+  const target =
+    document.getElementById("page-" + page);
 
-    const target =
-        $("page-" + page);
+  if(target){
 
+    target.classList.add("active");
 
-    if (target) {
+  }
 
-        target
-            .classList
-            .add("active");
+  document.querySelectorAll(".side-btn")
+    .forEach(btn => {
 
-    }
+      btn.classList.toggle(
+        "active",
+        btn.dataset.page === page
+      );
 
+    });
 
-    document
-        .querySelectorAll(".nav button")
-        .forEach(button => {
+  if(page === "friends"){
 
-            button.classList.toggle(
-                "active",
-                button.dataset.page === page
-            );
+    loadFriends();
 
-        });
+  }
 
+  if(page === "orders"){
 
-    if (page === "people") {
+    loadOrders();
 
-        searchUsers();
+  }
 
-    }
+  if(page === "chat"){
 
+    loadChatUsers();
 
-    if (page === "orders") {
-
-        loadOrders();
-
-    }
-
-
-    if (page === "chat") {
-
-        openPublicChat();
-
-    }
+  }
 
 }
 
 
 /* =========================================================
-   USUÁRIOS
-========================================================= */
+   FRIENDS / SEARCH
+   ========================================================= */
 
-async function searchUsers() {
+async function searchUsers(){
 
-    if (!currentUser) {
+  const term =
+    document.getElementById("userSearch")
+      .value
+      .trim();
 
-        return;
+  const container =
+    document.getElementById("searchResults");
 
-    }
+  if(term.length < 2){
 
+    container.innerHTML =
+      `<p class="muted">Digite pelo menos 2 caracteres.</p>`;
 
-    const search =
-        $("userSearch")
-            .value
-            .trim();
+    return;
+  }
 
+  const { data,error } =
+    await db
+      .from("profiles")
+      .select("*")
+      .ilike("username","%" + term + "%")
+      .neq("id",currentUser.id)
+      .limit(20);
 
-    let query =
-        supabaseClient
-            .from("profiles")
-            .select("*")
-            .neq(
-                "id",
-                currentUser.id
-            )
-            .order(
-                "username"
-            )
-            .limit(30);
+  if(error){
 
+    container.innerHTML =
+      `<p class="muted">${escapeHtml(error.message)}</p>`;
 
-    if (search) {
+    return;
+  }
 
-        query =
-            query.ilike(
-                "username",
-                "%" +
-                search +
-                "%"
-            );
+  if(!data.length){
 
-    }
+    container.innerHTML =
+      `<p class="muted">Nenhum usuário encontrado.</p>`;
 
+    return;
+  }
 
-    const {
-        data,
-        error
-    } =
-        await query;
+  container.innerHTML =
+    data.map(user => `
 
+      <div class="user-result">
 
-    if (error) {
+        <div class="user-info">
 
-        $("userResults")
-            .innerHTML =
-            '<div class="empty">' +
-            escapeHtml(
-                error.message
-            ) +
-            "</div>";
+          <img
+            class="avatar"
+            src="${escapeHtml(avatarFor(user))}"
+          >
 
-        return;
+          <div>
+            <strong>${escapeHtml(user.username)}</strong>
+            <small>
+              ${user.roblox_username
+                ? "Roblox: " + escapeHtml(user.roblox_username)
+                : "Membro da comunidade"}
+            </small>
+          </div>
 
-    }
+        </div>
 
+        <div style="display:flex;gap:7px;flex-wrap:wrap">
 
-    if (!data.length) {
+          <button
+            class="secondary"
+            onclick="sendFriendRequest('${user.id}')"
+          >
+            Adicionar
+          </button>
 
-        $("userResults")
-            .innerHTML =
-            '<div class="empty">' +
-            "Nenhum usuário encontrado." +
-            "</div>";
+          <button
+            class="primary"
+            onclick="startChat('${user.id}')"
+          >
+            Chat
+          </button>
 
-        return;
+        </div>
 
-    }
+      </div>
 
+    `).join("");
 
-    $("userResults")
-        .innerHTML =
-        data
-            .map(user => `
-
-<div class="user-item">
-
-<div class="user-main">
-
-<img
-class="avatar"
-src="${avatarUrl(
-    user.avatar_url,
-    user.username
-)}"
-alt=""
->
-
-<div>
-
-<strong>
-${escapeHtml(
-    user.username
-)}
-</strong>
-
-<small>
-Roblox:
-${escapeHtml(
-    user.roblox_username ||
-    "—"
-)}
-</small>
-
-</div>
-
-</div>
+}
 
 
-<div class="row">
+async function sendFriendRequest(receiver){
 
-<button
-class="secondary-button"
-onclick="addFriend('${user.id}')">
+  const { data:existing } =
+    await db
+      .from("friendships")
+      .select("*")
+      .or(
+        `and(requester.eq.${currentUser.id},receiver.eq.${receiver}),and(requester.eq.${receiver},receiver.eq.${currentUser.id})`
+      )
+      .maybeSingle();
 
-Adicionar
+  if(existing){
 
-</button>
+    toast("Essa conexão já existe ou está pendente.");
 
-<button
-class="link-button"
-onclick="startPrivate(
-'${user.id}',
-${JSON.stringify(
-    user.username
-)}
-)">
+    return;
+  }
 
-Chat
+  const { error } =
+    await db
+      .from("friendships")
+      .insert({
 
-</button>
+        requester:currentUser.id,
 
-</div>
+        receiver,
 
-</div>
+        status:"pending"
 
-`)
-.join("");
+      });
+
+  if(error){
+
+    toast(error.message);
+
+    return;
+  }
+
+  toast("Solicitação enviada!");
+
+  loadFriends();
+
+}
+
+
+async function loadFriends(){
+
+  const container =
+    document.getElementById("friendList");
+
+  if(!container || !currentUser) return;
+
+  const { data,error } =
+    await db
+      .from("friendships")
+      .select("*")
+      .or(
+        `requester.eq.${currentUser.id},receiver.eq.${currentUser.id}`
+      )
+      .order("created_at",{ascending:false});
+
+  if(error){
+
+    container.innerHTML =
+      `<p class="muted">${escapeHtml(error.message)}</p>`;
+
+    return;
+  }
+
+  if(!data.length){
+
+    container.innerHTML =
+      `<p class="muted">Você ainda não possui conexões.</p>`;
+
+    updateHomeStats();
+
+    return;
+  }
+
+  const ids = data.map(f =>
+    f.requester === currentUser.id
+      ? f.receiver
+      : f.requester
+  );
+
+  const { data:profiles } =
+    await db
+      .from("profiles")
+      .select("*")
+      .in("id",ids);
+
+  const map = {};
+
+  (profiles || []).forEach(p => {
+    map[p.id] = p;
+  });
+
+  container.innerHTML =
+    data.map(f => {
+
+      const otherId =
+        f.requester === currentUser.id
+          ? f.receiver
+          : f.requester;
+
+      const person =
+        map[otherId];
+
+      if(!person) return "";
+
+      const incoming =
+        f.receiver === currentUser.id &&
+        f.status === "pending";
+
+      return `
+
+        <div class="user-result">
+
+          <div class="user-info">
+
+            <img
+              class="avatar"
+              src="${escapeHtml(avatarFor(person))}"
+            >
+
+            <div>
+              <strong>${escapeHtml(person.username)}</strong>
+              <small>${escapeHtml(f.status)}</small>
+            </div>
+
+          </div>
+
+          <div style="display:flex;gap:7px">
+
+            ${
+              incoming
+              ?
+              `
+              <button
+                class="primary"
+                onclick="acceptFriend('${f.id}')"
+              >
+                Aceitar
+              </button>
+              `
+              :
+              ""
+            }
+
+            ${
+              f.status === "accepted"
+              ?
+              `
+              <button
+                class="secondary"
+                onclick="startChat('${otherId}')"
+              >
+                Chat
+              </button>
+              `
+              :
+              ""
+            }
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+  updateHomeStats();
+
+}
+
+
+async function acceptFriend(id){
+
+  const { error } =
+    await db
+      .from("friendships")
+      .update({
+        status:"accepted"
+      })
+      .eq("id",id)
+      .eq("receiver",currentUser.id);
+
+  if(error){
+
+    toast(error.message);
+
+    return;
+  }
+
+  toast("Amizade aceita!");
+
+  loadFriends();
 
 }
 
 
 /* =========================================================
-   AMIZADES
-========================================================= */
+   CHAT
+   ========================================================= */
 
-async function addFriend(id) {
+async function loadChatUsers(){
 
-    const {
-        error
-    } =
-        await supabaseClient
-            .from("friendships")
-            .insert({
+  const container =
+    document.getElementById("chatUsers");
 
-                requester:
-                    currentUser.id,
+  if(!container || !currentUser) return;
 
-                receiver:
-                    id,
+  const { data,error } =
+    await db
+      .from("friendships")
+      .select("*")
+      .eq("status","accepted")
+      .or(
+        `requester.eq.${currentUser.id},receiver.eq.${currentUser.id}`
+      );
 
-                status:
-                    "pending"
+  if(error){
 
-            });
+    container.innerHTML =
+      `<p class="muted">${escapeHtml(error.message)}</p>`;
+
+    return;
+  }
+
+  const ids =
+    data.map(f =>
+      f.requester === currentUser.id
+        ? f.receiver
+        : f.requester
+    );
+
+  if(!ids.length){
+
+    container.innerHTML =
+      `<p class="muted" style="padding:8px">Adicione amigos para conversar.</p>`;
+
+    return;
+  }
+
+  const { data:profiles } =
+    await db
+      .from("profiles")
+      .select("*")
+      .in("id",ids);
+
+  container.innerHTML =
+    (profiles || []).map(person => `
+
+      <div
+        class="chat-user"
+        onclick="startChat('${person.id}')"
+      >
+
+        <div style="display:flex;align-items:center;gap:9px">
+
+          <img
+            class="avatar"
+            src="${escapeHtml(avatarFor(person))}"
+          >
+
+          <strong>${escapeHtml(person.username)}</strong>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
 
 
-    if (error) {
+async function startChat(otherUserId){
 
-        if (
-            error.code ===
-            "23505"
-        ) {
+  if(otherUserId === currentUser.id){
 
-            toast(
-                "Essa solicitação já existe."
-            );
+    toast("Você não pode conversar consigo mesmo.");
 
-        } else {
+    return;
+  }
 
-            toast(
-                error.message
-            );
+  const { data,error } =
+    await db.rpc(
+      "create_direct_conversation",
+      {
+        other_user:otherUserId
+      }
+    );
 
-        }
-
-        return;
-
-    }
-
+  if(error){
 
     toast(
-        "Solicitação de amizade enviada 🤝"
+      "Não foi possível criar a conversa: "
+      + error.message
     );
 
-}
+    return;
+  }
 
+  currentConversation = data;
+  currentChatUser = otherUserId;
 
-async function loadFriends() {
+  const { data:person } =
+    await db
+      .from("profiles")
+      .select("*")
+      .eq("id",otherUserId)
+      .single();
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("friendships")
-            .select("*")
-            .or(
-                "requester.eq." +
-                currentUser.id +
-                ",receiver.eq." +
-                currentUser.id
-            )
-            .eq(
-                "status",
-                "accepted"
-            );
+  document.getElementById("chatTitle").textContent =
+    person?.username || "Conversa";
 
+  document.getElementById("messageInput").disabled = false;
+  document.getElementById("sendMessageButton").disabled = false;
 
-    if (error || !data) {
+  openPage("chat");
 
-        return;
+  await loadMessages();
 
-    }
-
-
-    const ids =
-        [
-            ...new Set(
-                data.map(
-                    friendship =>
-                        friendship.requester ===
-                        currentUser.id
-                            ? friendship.receiver
-                            : friendship.requester
-                )
-            )
-        ];
-
-
-    if (!ids.length) {
-
-        $("privateContacts")
-            .innerHTML = "";
-
-        return;
-
-    }
-
-
-    const result =
-        await supabaseClient
-            .from("profiles")
-            .select("*")
-            .in("id", ids);
-
-
-    const friends =
-        result.data || [];
-
-
-    $("privateContacts")
-        .innerHTML =
-        friends
-            .map(friend => `
-
-<button
-class="chat-contact"
-onclick="startPrivate(
-'${friend.id}',
-${JSON.stringify(
-    friend.username
-)}
-)">
-
-<img
-class="avatar"
-src="${avatarUrl(
-    friend.avatar_url,
-    friend.username
-)}"
-alt=""
->
-
-<span>
-
-${escapeHtml(
-    friend.username
-)}
-
-</span>
-
-</button>
-
-`)
-.join("");
+  subscribeMessages();
 
 }
 
 
-/* =========================================================
-   CHAT PÚBLICO
-========================================================= */
+async function loadMessages(){
 
-async function openPublicChat() {
+  if(!currentConversation) return;
 
-    currentChat = {
+  const container =
+    document.getElementById("messages");
 
-        type: "public",
+  const { data,error } =
+    await db
+      .from("messages")
+      .select("*")
+      .eq("conversation_id",currentConversation)
+      .order("created_at",{ascending:true});
 
-        id: null
+  if(error){
 
-    };
+    container.innerHTML =
+      `<p class="muted">${escapeHtml(error.message)}</p>`;
 
+    return;
+  }
 
-    $("chatTitle")
-        .textContent =
-        "Chat público";
+  container.innerHTML =
+    (data || []).map(renderMessage).join("");
 
-
-    document
-        .querySelectorAll(
-            ".chat-contact"
-        )
-        .forEach(
-            element =>
-                element
-                    .classList
-                    .remove("active")
-        );
-
-
-    $("publicChatButton")
-        .classList
-        .add("active");
-
-
-    subscribePublic();
-
-    await loadPublicMessages();
+  container.scrollTop =
+    container.scrollHeight;
 
 }
 
 
-/*
-   IMPORTANTE:
+function renderMessage(message){
 
-   Para o chat público real funcionar,
-   sua tabela public_messages precisa existir.
+  const mine =
+    message.sender_id === currentUser.id;
 
-   Estrutura:
+  return `
 
-   public_messages
-   - id
-   - sender_id
-   - content
-   - created_at
-*/
+    <div class="message ${mine ? "mine":""}">
 
+      ${escapeHtml(message.content)}
 
-async function loadPublicMessages() {
+      <small>
+        ${new Date(message.created_at).toLocaleString("pt-BR")}
+      </small>
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("public_messages")
-            .select(
-                "id,sender_id,content,created_at"
-            )
-            .order(
-                "created_at",
-                {
-                    ascending: true
-                }
-            )
-            .limit(100);
+    </div>
 
-
-    if (error) {
-
-        $("messages")
-            .innerHTML = `
-
-<div class="empty">
-
-O chat público ainda precisa
-da tabela
-<strong>public_messages</strong>
-no Supabase.
-
-</div>
-
-`;
-
-        return;
-
-    }
-
-
-    const ids =
-        [
-            ...new Set(
-                data.map(
-                    message =>
-                        message.sender_id
-                )
-            )
-        ];
-
-
-    let profiles = [];
-
-
-    if (ids.length) {
-
-        const result =
-            await supabaseClient
-                .from("profiles")
-                .select(
-                    "id,username"
-                )
-                .in(
-                    "id",
-                    ids
-                );
-
-
-        profiles =
-            result.data || [];
-
-    }
-
-
-    const map =
-        Object.fromEntries(
-            profiles.map(
-                profile =>
-                    [
-                        profile.id,
-                        profile.username
-                    ]
-            )
-        );
-
-
-    renderMessages(
-        data.map(
-            message => ({
-
-                ...message,
-
-                username:
-                    map[
-                        message.sender_id
-                    ] ||
-                    "Usuário"
-
-            })
-        )
-    );
+  `;
 
 }
 
 
-function subscribePublic() {
+async function sendMessage(event){
 
-    if (realtimeChannel) {
+  event.preventDefault();
 
-        supabaseClient
-            .removeChannel(
-                realtimeChannel
-            );
+  if(!currentConversation) return;
 
-    }
+  const input =
+    document.getElementById("messageInput");
 
+  const content =
+    input.value.trim();
 
-    realtimeChannel =
-        supabaseClient
-            .channel(
-                "nova-public-chat"
-            )
-            .on(
-                "postgres_changes",
-                {
-                    event: "INSERT",
-                    schema: "public",
-                    table: "public_messages"
-                },
-                () => {
+  if(!content) return;
 
-                    loadPublicMessages();
+  const { error } =
+    await db
+      .from("messages")
+      .insert({
 
-                }
-            )
-            .subscribe();
+        conversation_id:currentConversation,
 
-}
+        sender_id:currentUser.id,
 
+        content
 
-/* =========================================================
-   CHAT PRIVADO
-========================================================= */
+      });
 
-async function startPrivate(
-    userId,
-    username
-) {
+  if(error){
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .rpc(
-                "create_direct_conversation",
-                {
-                    other_user:
-                        userId
-                }
-            );
+    toast(error.message);
 
+    return;
+  }
 
-    if (error) {
-
-        toast(
-            "Não foi possível abrir a conversa: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    currentChat = {
-
-        type: "private",
-
-        id: data
-
-    };
-
-
-    $("chatTitle")
-        .textContent =
-        username;
-
-
-    document
-        .querySelectorAll(
-            ".page"
-        )
-        .forEach(
-            page =>
-                page.classList
-                    .remove("active")
-        );
-
-
-    $("page-chat")
-        .classList
-        .add("active");
-
-
-    await loadPrivateMessages();
-
-    subscribePrivate();
+  input.value = "";
 
 }
 
 
-async function loadPrivateMessages() {
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("messages")
-            .select(
-                "id,sender_id,content,created_at"
-            )
-            .eq(
-                "conversation_id",
-                currentChat.id
-            )
-            .order(
-                "created_at",
-                {
-                    ascending: true
-                }
-            )
-            .limit(100);
-
-
-    if (error) {
-
-        $("messages")
-            .innerHTML =
-            '<div class="empty">' +
-            "Não foi possível carregar a conversa." +
-            "</div>";
-
-        return;
-
-    }
-
-
-    const ids =
-        [
-            ...new Set(
-                data.map(
-                    message =>
-                        message.sender_id
-                )
-            )
-        ];
-
-
-    let profiles = [];
-
-
-    if (ids.length) {
-
-        const result =
-            await supabaseClient
-                .from("profiles")
-                .select(
-                    "id,username"
-                )
-                .in(
-                    "id",
-                    ids
-                );
-
-
-        profiles =
-            result.data || [];
-
-    }
-
-
-    const map =
-        Object.fromEntries(
-            profiles.map(
-                profile =>
-                    [
-                        profile.id,
-                        profile.username
-                    ]
-            )
-        );
-
-
-    renderMessages(
-        data.map(
-            message => ({
-
-                ...message,
-
-                username:
-                    map[
-                        message.sender_id
-                    ] ||
-                    "Usuário"
-
-            })
-        )
-    );
-
-}
-
-
-function subscribePrivate() {
-
-    if (realtimeChannel) {
-
-        supabaseClient
-            .removeChannel(
-                realtimeChannel
-            );
-
-    }
-
-
-    realtimeChannel =
-        supabaseClient
-            .channel(
-                "nova-private-" +
-                currentChat.id
-            )
-            .on(
-                "postgres_changes",
-                {
-                    event: "INSERT",
-                    schema: "public",
-                    table: "messages",
-
-                    filter:
-                        "conversation_id=eq." +
-                        currentChat.id
-
-                },
-                () => {
-
-                    loadPrivateMessages();
-
-                }
-            )
-            .subscribe();
-
-}
-
-
-async function sendMessage() {
-
-    const input =
-        $("messageInput");
-
-
-    const content =
-        input.value.trim();
-
-
-    if (!content) {
-
-        return;
-
-    }
-
-
-    let error;
-
-
-    if (
-        currentChat.type ===
-        "public"
-    ) {
-
-        const result =
-            await supabaseClient
-                .from(
-                    "public_messages"
-                )
-                .insert({
-
-                    sender_id:
-                        currentUser.id,
-
-                    content
-
-                });
-
-
-        error =
-            result.error;
-
-    } else {
-
-        const result =
-            await supabaseClient
-                .from(
-                    "messages"
-                )
-                .insert({
-
-                    conversation_id:
-                        currentChat.id,
-
-                    sender_id:
-                        currentUser.id,
-
-                    content
-
-                });
-
-
-        error =
-            result.error;
-
-    }
-
-
-    if (error) {
-
-        toast(
-            "Erro ao enviar: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    input.value = "";
-
-}
-
-
-function renderMessages(messages) {
-
-    if (!messages.length) {
-
-        $("messages")
-            .innerHTML =
-            '<div class="empty">' +
-            "Nenhuma mensagem ainda." +
-            "</div>";
-
-        return;
-
-    }
-
-
-    $("messages")
-        .innerHTML =
-        messages
-            .map(
-                message => `
-
-<div
-class="message
-${
-    message.sender_id ===
-    currentUser.id
-        ? "mine"
-        : ""
-}">
-
-<strong>
-
-${escapeHtml(
-    message.username ||
-    "Usuário"
-)}
-
-</strong>
-
-<br>
-
-${escapeHtml(
-    message.content
-)}
-
-<small>
-
-${new Date(
-    message.created_at
-).toLocaleString(
-    "pt-BR"
-)}
-
-</small>
-
-</div>
-
-`
-            )
-            .join("");
-
-
-    $("messages")
-        .scrollTop =
-        $("messages")
-            .scrollHeight;
+function subscribeMessages(){
+
+  if(messageChannel){
+
+    db.removeChannel(messageChannel);
+
+  }
+
+  messageChannel =
+    db
+      .channel(
+        "conversation-" + currentConversation
+      )
+      .on(
+        "postgres_changes",
+        {
+          event:"INSERT",
+          schema:"public",
+          table:"messages",
+          filter:
+            "conversation_id=eq." + currentConversation
+        },
+        payload => {
+
+          const container =
+            document.getElementById("messages");
+
+          container.insertAdjacentHTML(
+            "beforeend",
+            renderMessage(payload.new)
+          );
+
+          container.scrollTop =
+            container.scrollHeight;
+
+        }
+      )
+      .subscribe();
 
 }
 
 
 /* =========================================================
    LOJA
-========================================================= */
+   ========================================================= */
 
-function renderProducts() {
+function renderProducts(){
 
-    $("products")
-        .innerHTML =
-        products
-            .map(
-                product => `
+  const grid =
+    document.getElementById("productsGrid");
 
-<article
-class="product glass">
+  grid.innerHTML =
+    PRODUCTS.map(product => `
 
-<div class="product-orb">
+      <div class="card glass product">
 
-${product.icon}
+        <div class="product-icon">
+          ${product.icon}
+        </div>
 
-</div>
+        <h3>${escapeHtml(product.name)}</h3>
 
-<h3>
+        <p class="muted">
+          ${escapeHtml(product.description)}
+        </p>
 
-${escapeHtml(
-    product.name
-)}
+        <div class="price">
+          ${money(product.price)}
+        </div>
 
-</h3>
+        <button
+          class="primary"
+          onclick="addToCart('${product.id}')"
+        >
+          Adicionar ao carrinho
+        </button>
 
-<p class="muted">
+      </div>
 
-Produto da loja
-
-</p>
-
-<div class="price">
-
-R$
-${product.price
-    .toFixed(2)
-    .replace(".",",")}
-
-</div>
-
-<button
-class="primary-button full"
-onclick="addToCart(
-'${product.id}'
-)">
-
-Adicionar ao carrinho
-
-</button>
-
-</article>
-
-`
-            )
-            .join("");
+    `).join("");
 
 }
 
 
-function addToCart(id) {
+function addToCart(productId){
 
-    const product =
-        products.find(
-            item =>
-                item.id === id
-        );
+  const product =
+    PRODUCTS.find(p => p.id === productId);
 
+  if(!product) return;
 
-    if (!product) {
+  const existing =
+    cart.find(item => item.id === productId);
 
-        return;
+  if(existing){
 
-    }
+    existing.quantity++;
 
+  }else{
 
-    const existing =
-        cart.find(
-            item =>
-                item.id === id
-        );
+    cart.push({
 
+      id:product.id,
 
-    if (existing) {
+      name:product.name,
 
-        existing.quantity++;
+      price:product.price,
 
-    } else {
+      quantity:1
 
-        cart.push({
+    });
 
-            id:
-                product.id,
+  }
 
-            name:
-                product.name,
+  renderCart();
 
-            price:
-                product.price,
+  toast("Adicionado ao carrinho!");
 
-            quantity:
-                1
-
-        });
-
-    }
+}
 
 
-    saveCart();
+function changeCartQuantity(id,delta){
 
-    toast(
-        "Produto adicionado ao carrinho 🛒"
+  const item =
+    cart.find(x => x.id === id);
+
+  if(!item) return;
+
+  item.quantity += delta;
+
+  if(item.quantity <= 0){
+
+    cart =
+      cart.filter(x => x.id !== id);
+
+  }
+
+  renderCart();
+
+}
+
+
+function renderCart(){
+
+  const container =
+    document.getElementById("cartItems");
+
+  const totalElement =
+    document.getElementById("cartTotal");
+
+  if(!container) return;
+
+  if(!cart.length){
+
+    container.innerHTML =
+      `<p class="muted">Seu carrinho está vazio.</p>`;
+
+    totalElement.textContent =
+      money(0);
+
+    return;
+  }
+
+  container.innerHTML =
+    cart.map(item => `
+
+      <div class="cart-row">
+
+        <div>
+
+          <strong>${escapeHtml(item.name)}</strong>
+
+          <div class="muted">
+            ${money(item.price)} cada
+          </div>
+
+        </div>
+
+        <div class="quantity">
+
+          <button onclick="changeCartQuantity('${item.id}',-1)">
+            −
+          </button>
+
+          <strong>${item.quantity}</strong>
+
+          <button onclick="changeCartQuantity('${item.id}',1)">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum + item.price * item.quantity,
+      0
     );
 
-}
-
-
-function saveCart() {
-
-    localStorage.setItem(
-        "nova_cart",
-        JSON.stringify(cart)
-    );
-
-    renderCart();
-
-}
-
-
-function renderCart() {
-
-    const count =
-        cart.reduce(
-            (total,item) =>
-                total +
-                item.quantity,
-            0
-        );
-
-
-    $("cartCount")
-        .textContent =
-        count;
-
-
-    if (!cart.length) {
-
-        $("cartItems")
-            .innerHTML =
-            '<div class="empty">' +
-            "Seu carrinho está vazio." +
-            "</div>";
-
-    } else {
-
-        $("cartItems")
-            .innerHTML =
-            cart
-                .map(
-                    item => `
-
-<div class="cart-row">
-
-<span>
-
-${escapeHtml(
-    item.name
-)}
-×
-${item.quantity}
-
-</span>
-
-<strong>
-
-R$
-${(
-    item.price *
-    item.quantity
-)
-.toFixed(2)
-.replace(".",",")}
-
-</strong>
-
-</div>
-
-`
-                )
-                .join("");
-
-    }
-
-
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
-
-
-    $("cartTotal")
-        .textContent =
-        total
-            .toFixed(2)
-            .replace(".",",");
-
-}
-
-
-function openCart() {
-
-    $("cartModal")
-        .classList
-        .add("show");
-
-    renderCart();
-
-}
-
-
-function closeCart() {
-
-    $("cartModal")
-        .classList
-        .remove("show");
+  totalElement.textContent =
+    money(total);
 
 }
 
 
 /* =========================================================
-   CHECKOUT WHATSAPP
-========================================================= */
+   CHECKOUT
+   ========================================================= */
 
-async function checkout() {
+async function checkout(){
 
-    if (!cart.length) {
+  if(!currentUser){
 
-        toast(
-            "Seu carrinho está vazio."
-        );
+    toast("Faça login primeiro.");
 
-        return;
+    return;
+  }
 
-    }
+  if(!cart.length){
 
+    toast("Seu carrinho está vazio.");
 
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
+    return;
+  }
 
-
-    const message =
-
-        "Olá! Quero fazer um pedido " +
-        "na NOVA COMMUNITY.%0A%0A" +
-
-        cart
-            .map(
-                item =>
-                    item.name +
-                    " x" +
-                    item.quantity +
-                    " — R$ " +
-                    (
-                        item.price *
-                        item.quantity
-                    )
-                    .toFixed(2)
-            )
-            .join("%0A") +
-
-        "%0A%0ATotal: R$ " +
-
-        total.toFixed(2);
-
-
-    const order =
-        await supabaseClient
-            .from("orders")
-            .insert({
-
-                user_id:
-                    currentUser.id,
-
-                total:
-
-                    total,
-
-                status:
-                    "pending",
-
-                whatsapp_message:
-                    decodeURIComponent(
-                        message
-                    )
-
-            })
-            .select()
-            .single();
-
-
-    if (order.error) {
-
-        toast(
-            "Erro ao criar pedido: " +
-            order.error.message
-        );
-
-        return;
-
-    }
-
-
-    const items =
-        await supabaseClient
-            .from("order_items")
-            .insert(
-
-                cart.map(
-                    item => ({
-
-                        order_id:
-                            order.data.id,
-
-                        product_id:
-                            item.id,
-
-                        product_name:
-                            item.name,
-
-                        quantity:
-                            item.quantity,
-
-                        unit_price:
-                            item.price
-
-                    })
-                )
-
-            );
-
-
-    if (items.error) {
-
-        toast(
-            "O pedido foi criado, mas houve erro nos itens."
-        );
-
-        return;
-
-    }
-
-
-    window.open(
-        "https://wa.me/" +
-        WHATSAPP_DA_LOJA +
-        "?text=" +
-        message,
-        "_blank"
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum + item.price * item.quantity,
+      0
     );
 
+  const whatsappText =
+`
+NOVA COMMUNITY — NOVO PEDIDO
 
-    cart = [];
+Usuário: ${currentProfile?.username || "Usuário"}
+E-mail: ${currentUser.email || "Não informado"}
 
-    saveCart();
+Itens:
+${cart.map(item =>
+  `• ${item.name} x${item.quantity} — ${money(item.price * item.quantity)}`
+).join("\n")}
 
-    closeCart();
+TOTAL: ${money(total)}
 
-    await loadOrders();
+Status: Aguardando pagamento.
+`;
 
+  const { data:order,error } =
+    await db
+      .from("orders")
+      .insert({
 
-    toast(
-        "Pedido criado! WhatsApp aberto 📱"
-    );
+        user_id:currentUser.id,
+
+        total,
+
+        status:"pending",
+
+        whatsapp_message:whatsappText
+
+      })
+      .select()
+      .single();
+
+  if(error){
+
+    toast(error.message);
+
+    return;
+  }
+
+  const items =
+    cart.map(item => ({
+
+      order_id:order.id,
+
+      product_id:item.id,
+
+      product_name:item.name,
+
+      quantity:item.quantity,
+
+      unit_price:item.price
+
+    }));
+
+  const { error:itemError } =
+    await db
+      .from("order_items")
+      .insert(items);
+
+  if(itemError){
+
+    toast(itemError.message);
+
+    return;
+  }
+
+  const phone =
+    WHATSAPP_DA_LOJA.replace(/\D/g,"");
+
+  const url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(whatsappText);
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+
+  cart = [];
+
+  renderCart();
+
+  await loadOrders();
+
+  toast("Pedido criado! O WhatsApp foi aberto.");
 
 }
 
 
 /* =========================================================
    PEDIDOS
-========================================================= */
+   ========================================================= */
 
-async function loadOrders() {
+async function loadOrders(){
 
-    if (!currentUser) {
+  const container =
+    document.getElementById("ordersList");
 
-        return;
+  if(!container || !currentUser) return;
 
-    }
+  const { data,error } =
+    await db
+      .from("orders")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false});
 
+  if(error){
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("orders")
-            .select("*")
-            .eq(
-                "user_id",
-                currentUser.id
-            )
-            .order(
-                "created_at",
-                {
-                    ascending: false
-                }
-            );
+    container.innerHTML =
+      `<p class="muted">${escapeHtml(error.message)}</p>`;
 
+    return;
+  }
 
-    if (error) {
+  document.getElementById("homeOrders").textContent =
+    data?.length || 0;
 
-        $("orders")
-            .innerHTML =
-            '<div class="empty">' +
-            escapeHtml(
-                error.message
-            ) +
-            "</div>";
+  if(!data?.length){
 
-        return;
+    container.innerHTML =
+      `<p class="muted">Você ainda não possui pedidos.</p>`;
 
-    }
+    return;
+  }
 
+  container.innerHTML =
+    data.map(order => `
 
-    if (!data.length) {
+      <div class="card" style="background:rgba(255,255,255,.035);margin-bottom:10px">
 
-        $("orders")
-            .innerHTML =
-            '<div class="empty">' +
-            "Você ainda não fez pedidos." +
-            "</div>";
+        <div style="display:flex;justify-content:space-between;gap:10px">
 
-        return;
+          <strong>
+            Pedido #${order.id}
+          </strong>
 
-    }
+          <span class="muted">
+            ${escapeHtml(order.status)}
+          </span>
 
+        </div>
 
-    $("orders")
-        .innerHTML =
-        data
-            .map(
-                order => `
+        <p class="muted" style="margin-top:7px">
+          ${money(order.total)}
+        </p>
 
-<div
-class="user-item">
+        <small class="muted">
+          ${new Date(order.created_at).toLocaleString("pt-BR")}
+        </small>
 
-<div>
+      </div>
 
-<strong>
-
-Pedido #${order.id}
-
-</strong>
-
-<br>
-
-<small class="muted">
-
-${new Date(
-    order.created_at
-).toLocaleString(
-    "pt-BR"
-)}
-
-</small>
-
-</div>
-
-<div>
-
-<span class="badge">
-
-${escapeHtml(
-    order.status
-)}
-
-</span>
-
-<br>
-
-<strong>
-
-R$
-${Number(
-    order.total
-)
-.toFixed(2)
-.replace(".",",")}
-
-</strong>
-
-</div>
-
-</div>
-
-`
-            )
-            .join("");
+    `).join("");
 
 }
 
 
 /* =========================================================
-   PRESENÇA
-========================================================= */
+   SETTINGS
+   ========================================================= */
 
-function setupPresence() {
+async function changePassword(){
 
-    const channel =
-        supabaseClient
-            .channel(
-                "nova-presence",
-                {
-                    config: {
+  const password =
+    document.getElementById("newPassword")
+      .value;
 
-                        presence: {
+  if(password.length < 6){
 
-                            key:
-                                currentUser.id
+    toast("A senha precisa ter pelo menos 6 caracteres.");
 
-                        }
+    return;
+  }
 
-                    }
+  const { error } =
+    await db.auth.updateUser({
+      password
+    });
 
-                }
-            );
+  if(error){
+
+    toast(error.message);
+
+    return;
+  }
+
+  document.getElementById("newPassword").value = "";
+
+  toast("Senha alterada!");
+
+}
 
 
-    channel.subscribe(
-        async status => {
+async function changeEmail(){
 
-            if (
-                status ===
-                "SUBSCRIBED"
-            ) {
+  const email =
+    document.getElementById("newEmail")
+      .value
+      .trim();
 
-                await channel.track({
+  if(!email){
 
-                    online_at:
-                        new Date()
-                            .toISOString(),
+    toast("Digite um novo e-mail.");
 
-                    username:
-                        currentProfile
-                            ?.username ||
-                        ""
+    return;
+  }
 
-                });
+  const { error } =
+    await db.auth.updateUser({
+      email
+    });
 
-            }
+  if(error){
 
-        }
-    );
+    toast(error.message);
+
+    return;
+  }
+
+  document.getElementById("newEmail").value = "";
+
+  toast("E-mail atualizado.");
 
 }
 
 
 /* =========================================================
-   SOM
-========================================================= */
+   LOGOUT
+   ========================================================= */
 
-function toggleSound() {
+async function logout(){
 
-    soundOn =
-        !soundOn;
+  if(messageChannel){
 
+    await db.removeChannel(messageChannel);
 
-    $("soundSwitch")
-        .classList
-        .toggle(
-            "on",
-            soundOn
-        );
+    messageChannel = null;
 
+  }
 
-    toast(
-        soundOn
-            ? "Som ativado ✨"
-            : "Som desativado"
-    );
+  await db.auth.signOut();
 
-}
+  currentUser = null;
+  currentProfile = null;
 
+  document.getElementById("mainApp")
+    .classList.add("hidden");
 
-/* =========================================================
-   BOTÃO SECRETO
-========================================================= */
+  document.getElementById("authScreen")
+    .classList.remove("hidden");
 
-function secretClick() {
+  showAuth("login");
 
-    secretClicks++;
-
-    clearTimeout(
-        secretTimer
-    );
-
-
-    secretTimer =
-        setTimeout(
-            () => {
-
-                secretClicks = 0;
-
-            },
-            1800
-        );
-
-
-    if (
-        secretClicks >= 5
-    ) {
-
-        secretClicks = 0;
-
-        openSecret();
-
-    }
-
-}
-
-
-function openSecret() {
-
-    $("secretScreen")
-        .classList
-        .add("show");
-
-
-    $("secretMessage")
-        .textContent =
-        "ACCESSING HIDDEN LAYER...";
-
-
-    $("secretCode")
-        .textContent =
-        "05 / 05 — CONNECTION ACCEPTED";
-
-
-    setTimeout(
-        () => {
-
-            $("secretMessage")
-                .textContent =
-                "VOCÊ ENCONTROU UMA PARTE QUE NÃO APARECE NO MENU.";
-
-        },
-        1100
-    );
-
-
-    setTimeout(
-        () => {
-
-            $("secretCode")
-                .textContent =
-                "NOVA // ARCHIVE // ENTRY_001";
-
-        },
-        2300
-    );
-
-}
-
-
-function closeSecret() {
-
-    $("secretScreen")
-        .classList
-        .remove("show");
+  toast("Você saiu da conta.");
 
 }
 
 
 /* =========================================================
-   PARTÍCULAS
-========================================================= */
+   HOME
+   ========================================================= */
 
-function createParticles() {
+async function updateHomeStats(){
 
-    const canvas =
-        $("particles");
+  if(!currentUser) return;
 
-    const context =
-        canvas.getContext("2d");
+  const { data } =
+    await db
+      .from("friendships")
+      .select("id")
+      .eq("status","accepted")
+      .or(
+        `requester.eq.${currentUser.id},receiver.eq.${currentUser.id}`
+      );
 
-
-    let particles = [];
-
-
-    function resize() {
-
-        canvas.width =
-            window.innerWidth *
-            devicePixelRatio;
-
-        canvas.height =
-            window.innerHeight *
-            devicePixelRatio;
-
-        context.setTransform(
-            devicePixelRatio,
-            0,
-            0,
-            devicePixelRatio,
-            0,
-            0
-        );
-
-
-        particles =
-            Array.from(
-                {
-                    length:
-                        Math.min(
-                            140,
-                            Math.floor(
-                                window.innerWidth /
-                                8
-                            )
-                        )
-                },
-                () => ({
-
-                    x:
-                        Math.random() *
-                        window.innerWidth,
-
-                    y:
-                        Math.random() *
-                        window.innerHeight,
-
-                    size:
-                        Math.random() *
-                        1.6 +
-                        .3,
-
-                    speed:
-                        Math.random() *
-                        .35 +
-                        .08,
-
-                    opacity:
-                        Math.random() *
-                        .55 +
-                        .15
-
-                })
-            );
-
-    }
-
-
-    function draw() {
-
-        context.clearRect(
-            0,
-            0,
-            window.innerWidth,
-            window.innerHeight
-        );
-
-
-        particles.forEach(
-            particle => {
-
-                particle.y -=
-                    particle.speed;
-
-
-                if (
-                    particle.y <
-                    -5
-                ) {
-
-                    particle.y =
-                        window.innerHeight +
-                        5;
-
-                    particle.x =
-                        Math.random() *
-                        window.innerWidth;
-
-                }
-
-
-                context.beginPath();
-
-
-                context.arc(
-                    particle.x,
-                    particle.y,
-                    particle.size,
-                    0,
-                    Math.PI * 2
-                );
-
-
-                context.fillStyle =
-                    "rgba(167,139,250," +
-                    particle.opacity +
-                    ")";
-
-
-                context.fill();
-
-            }
-        );
-
-
-        requestAnimationFrame(
-            draw
-        );
-
-    }
-
-
-    window.addEventListener(
-        "resize",
-        resize
-    );
-
-
-    resize();
-
-    draw();
+  document.getElementById("homeFriends").textContent =
+    data?.length || 0;
 
 }
 
 
 /* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
+   SECRET — 5 CLIQUES
+   ========================================================= */
 
-async function init() {
+function secretClick(){
 
-    createParticles();
+  secretClicks++;
 
-    renderProducts();
+  clearTimeout(secretTimer);
 
-    renderCart();
+  secretTimer =
+    setTimeout(()=>{
+      secretClicks = 0;
+    },1200);
 
+  if(secretClicks >= 5){
 
-    if (
-        !validateConfig()
-    ) {
+    secretClicks = 0;
 
-        return;
+    document
+      .getElementById("secretScreen")
+      .classList.add("show");
 
-    }
-
-
-    try {
-
-        supabaseClient =
-            window.supabase
-                .createClient(
-                    SUPABASE_URL,
-                    SUPABASE_PUBLISHABLE_KEY
-                );
-
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .auth
-                .getSession();
-
-
-        if (error) {
-
-            throw error;
-
-        }
-
-
-        if (
-            data.session
-        ) {
-
-            await enterApp(
-                data.session.user
-            );
-
-        }
-
-    } catch (error) {
-
-        authMessage(
-            "Erro ao conectar ao Supabase: " +
-            error.message
-        );
-
-    }
+  }
 
 }
 
+
+function closeSecret(){
+
+  document
+    .getElementById("secretScreen")
+    .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+const canvas =
+  document.getElementById("particles");
+
+const ctx =
+  canvas.getContext("2d");
+
+let particles = [];
+
+function resizeCanvas(){
+
+  canvas.width =
+    window.innerWidth *
+    devicePixelRatio;
+
+  canvas.height =
+    window.innerHeight *
+    devicePixelRatio;
+
+  ctx.setTransform(
+    devicePixelRatio,
+    0,
+    0,
+    devicePixelRatio,
+    0,
+    0
+  );
+
+}
 
 window.addEventListener(
-    "load",
-    init
+  "resize",
+  resizeCanvas
 );
+
+resizeCanvas();
+
+
+function createParticles(){
+
+  particles = [];
+
+  const amount =
+    Math.min(
+      100,
+      Math.floor(window.innerWidth / 12)
+    );
+
+  for(let i=0;i<amount;i++){
+
+    particles.push({
+
+      x:Math.random() * window.innerWidth,
+
+      y:Math.random() * window.innerHeight,
+
+      r:Math.random() * 1.7 + .4,
+
+      vx:(Math.random()-.5) * .25,
+
+      vy:(Math.random()-.5) * .25,
+
+      alpha:Math.random() * .6 + .15
+
+    });
+
+  }
+
+}
+
+createParticles();
+
+
+function animateParticles(){
+
+  ctx.clearRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight
+  );
+
+  for(const p of particles){
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x < 0) p.x = window.innerWidth;
+    if(p.x > window.innerWidth) p.x = 0;
+
+    if(p.y < 0) p.y = window.innerHeight;
+    if(p.y > window.innerHeight) p.y = 0;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.r,
+      0,
+      Math.PI * 2
+    );
+
+    ctx.fillStyle =
+      `rgba(177,145,255,${p.alpha})`;
+
+    ctx.fill();
+
+  }
+
+  requestAnimationFrame(
+    animateParticles
+  );
+
+}
+
+animateParticles();
+
+
+/* =========================================================
+   RECUPERAÇÃO DE SESSÃO / RESET
+   ========================================================= */
+
+async function handleRecoveryHash(){
+
+  const hash =
+    window.location.hash;
+
+  if(!hash) return;
+
+  if(
+    hash.includes("type=recovery") ||
+    hash.includes("access_token")
+  ){
+
+    const { data } =
+      await db.auth.getSession();
+
+    if(data.session){
+
+      currentUser = data.session.user;
+
+      document.getElementById("authScreen")
+        .classList.remove("hidden");
+
+      document.getElementById("mainApp")
+        .classList.add("hidden");
+
+      showAuth("login");
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+(async function(){
+
+  await handleRecoveryHash();
+
+  await checkSession();
+
+})();
 
 </script>
 
